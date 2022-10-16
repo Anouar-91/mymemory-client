@@ -1,0 +1,114 @@
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+.text-primary{
+    color: $default-color !important;
+}
+.text-secondary{
+    color: $second-color !important;
+}
+
+body {
+    background: #fafafa;
+    font-size: 14px;
+}
+
+p {
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #222;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+.card{
+    border-radius: 0px;
+}
+
+.card-content{
+    padding: 15px;
+}
+
+
+
+
+.shape {
+    background-color: $default-color;
+    text-align: left;
+    line-height: 24px;
+    border: 0px rgba(0,0,0,0.5);
+    margin: 15px 0;
+    padding: 0px;
+    letter-spacing: 0px;
+    font-weight: 300;
+    font-size: 14px;
+    white-space: normal;
+    min-height: 3px;
+    min-width: 60px;
+    max-height: 3px;
+    max-width: 60px;
+    position: relative;
+}
+
+.vich-image img{
+    width: 100%;
+    max-width: 450px;
+    margin-top: 15px;
+    padding: 7px;
+    border: 1px solid #eee;
+}
+
+.vich-image a{
+    display: block;
+    margin-bottom: 15px;
+}
+
+
+.ml-5{
+    margin-left: 50px;
+}
+.mr-5{
+    margin-right: 50px;
+}
+
+.ml-3{
+    margin-left: 30px;
+}
+.mr-3{
+    margin-right: 30px;
+}
