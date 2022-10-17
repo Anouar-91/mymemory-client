@@ -16,6 +16,8 @@ async function findAll(){
         return enWords
       } );
 }
+
+
 function deleteCustomer(id){
     return axios.delete(API_URL + 'en_words/' + id).then(async response => {
         const cachedEnWords = await Cache.get('enWords');
@@ -32,11 +34,14 @@ function find(id){
    });
 }
 
-function create(enWord, frWord){
-    return axios.post(API_URL + "en_words", enWord).then(async response => {
-        const cachedCustomers = await Cache.get('en_words');
-        if(cachedCustomers){
-            Cache.set("en_words", [...cachedCustomers, response.data]);
+function create(words){
+    return axios.post(API_URL + "en_fr_words/add", words).then(async response => {
+        const cachedEnWords = await Cache.get('enWords');
+        console.log('je suis avant')
+
+        if(cachedEnWords){
+            console.log('je suis dans le ache')
+            Cache.set("enWords", [...cachedEnWords, response.data]);
         }
         return response
 

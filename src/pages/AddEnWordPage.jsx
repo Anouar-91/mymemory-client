@@ -9,27 +9,36 @@ import axios from 'axios';
 
 
 function AddEnWordPage(props) {
-
-    const [word, setWord] = useState({
-        en: "",
-        fr: ""
+    const navigate = useNavigate();
+    const [words, setWords] = useState({
+        enWord: "",
+        frWord: ""
     })
 
     const handleChange = (e) => {
         const { name, value } = e.currentTarget;
-        setWord({
-            ...word,
+        setWords({
+            ...words,
             [name]: value,
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit =async  (e) => {
         e.preventDefault()
-        axios.post("http://127.0.0.1:8000/api/fr_words", {
-            content: word.fr
-        }).then((response) => {
-            axios.post('http://127.0.0.1:8000/api/en_words')
-        })
+        try {
+            const data = await EnWordsAPI.create(words)
+            toast.success("Registered successfully")
+
+            setWords({
+                enWord: "",
+                frWord: "" 
+            })
+            navigate("/en_words");
+
+        } catch (error) {
+            console.log(error)
+            toast.error("Error")
+        }
     }
 
     return (
@@ -40,16 +49,16 @@ function AddEnWordPage(props) {
             <div className="card">
 
                 <form onSubmit={handleSubmit}>
-                    <Field value={word.en}
+                    <Field required value={words.enWord}
                         onChange={handleChange}
-                        name="en"
+                        name="enWord"
                         label="English word"
                         placeholder="English word">
                     </Field>
                     <div className="mt-3">
-                    <Field value={word.fr}
+                    <Field required value={words.frWord}
                         onChange={handleChange}
-                        name="fr"
+                        name="frWord"
                         label="French word"
                         placeholder="French word">
                     </Field>
