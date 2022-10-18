@@ -3,7 +3,7 @@ import Pagination from '../components/Pagination';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner';
-import EnWordsAPI from '../services/EnWordsAPI';
+import WordAPI from '../services/WordAPI';
 
 export default function EnWordPage() {
 
@@ -14,7 +14,7 @@ export default function EnWordPage() {
 
     const fetchEnWords = async () => {
         try {
-            const data = await EnWordsAPI.findAll();
+            const data = await WordAPI.findAll();
             setEnWords(data)
             setLoading(false)
         } catch (error) {
@@ -27,7 +27,7 @@ export default function EnWordPage() {
         const copyWords = [...enWords];
         setEnWords(enWords.filter(word => word.id !== id))
         try {
-            await EnWordsAPI.delete(id)
+            await WordAPI.delete(id)
         } catch (error) {
             toast.error("An error has occurred")
             setEnWords(copyWords);
@@ -63,7 +63,7 @@ export default function EnWordPage() {
         <>
             <div className="d-flex justify-content-between align-items-center">
                 <h1>List of words</h1>
-                <Link to="/en_words/new" className="btn btn-primary">Nouveau mot</Link>
+                <Link to="/en_words/new" className="btn btn-primary">New word</Link>
             </div>
 
             <div className="form-group mb-5 mt-5">
@@ -76,6 +76,7 @@ export default function EnWordPage() {
                             <th>Id</th>
                             <th>English Word</th>
                             <th>French Word</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -91,8 +92,16 @@ export default function EnWordPage() {
                                     <button
                                         onClick={() => handleDelete(word.id)}
 
-                                        className="btn btn-sm btn-danger">Delete
+                                        className="btn btn-sm btn-danger"><i className="fa-solid fa-trash-can"></i>
                                     </button>
+                                </td>
+ 
+                                <td>
+                                    <Link
+                                        to={"/update_words/" + word.id}
+
+                                        className="btn btn-sm btn-warning"><i className="fa-solid fa-pen-to-square"></i>
+                                    </Link>
                                 </td>
                                 <td>
                                     <Link

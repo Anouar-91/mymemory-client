@@ -66,16 +66,30 @@ function addFrTranslation(word, id){
     })
 }
 
-function update(id, customer){
-    return axios.put(API_URL + "customers/" + id, customer).then(async response => {
-        const cachedCustomers = await Cache.get('customers');
-        if(cachedCustomers){
-            const index = cachedCustomers.findIndex(c => c.id === +id);
-            cachedCustomers[index] = response.data;
-            Cache.set("customers",cachedCustomers );
+function update(word){
+    return axios.put(API_URL + "en_words/" + word.id, {content:word.content}).then(async response => {
+        const cachedEnWords = await Cache.get('enWords');
+        if(cachedEnWords){
+            const index = cachedEnWords.findIndex(w => w.id === +word.id);
+            cachedEnWords[index] = response.data;
+            Cache.set("enWords",cachedEnWords );
         }
         return response
-    })
+    }).catch(error =>console.log(error))
+}
+
+function updateFrWord(id, word){
+    console.log(word, "je suis EnWordAPI")
+    return axios.put(API_URL + "fr_words/" +id, {content:word}).then(async response => {
+        const cachedEnWords = await Cache.get('enWords');
+        if(cachedEnWords){
+            const enWord = await find(response.data.enWord.id);
+            const index = cachedEnWords.findIndex(w => w.id === enWord.id);
+            cachedEnWords[index] = enWord;
+            Cache.set("enWords",cachedEnWords );
+        }
+        return response
+    }).catch(error =>console.log(error))
 }
 
 export default {
@@ -84,5 +98,6 @@ export default {
     find,
     create, 
     update,
-    addFrTranslation
+    addFrTranslation,
+    updateFrWord
 }

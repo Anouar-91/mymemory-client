@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Field from "../components/forms/field";
-import EnWordsAPI from "../services/EnWordsAPI";
+import WordAPI from "../services/WordAPI";
 import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner'
 import axios from 'axios';
@@ -16,7 +16,7 @@ function AddTranslationPage(props) {
     let { id } = useParams();
 
     const fetchEnWord = async () => {
-       const data =  await EnWordsAPI.find(id)
+       const data =  await WordAPI.find(id)
        setEnWord(data);
        setLoading(false)
     }
@@ -34,7 +34,7 @@ function AddTranslationPage(props) {
     const handleSubmit =async  (e) => {
         e.preventDefault()
         try {
-            const data = await EnWordsAPI.addFrTranslation(frWord, id)
+            const data = await WordAPI.addFrTranslation(frWord, id)
             toast.success("Registered successfully")
             setFrWord("")
             navigate("/en_words");

@@ -40,14 +40,14 @@ function Navbar() {
             {!isAuthenticated ? (
               <>
                 <li className="nav-item">
-                  <Link to="/register" className="nav-link">Inscription</Link>
+                  <Link to="/register" className="nav-link">Register</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={"login"} className="btn btn-success">Connexion</Link>
+                  <Link to={"login"} className="btn btn-success">Login</Link>
                 </li></>)
               : (
                 <li className="nav-item">
-                  <button onClick={handleLogout} className="btn btn-danger">Déconnexion</button>
+                  <button onClick={handleLogout} className="btn btn-danger">Logout</button>
                 </li>
               )
             }

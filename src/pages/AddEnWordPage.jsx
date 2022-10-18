@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {  useNavigate } from 'react-router-dom';
 import Field from "../components/forms/field";
-import EnWordsAPI from "../services/EnWordsAPI";
+import WordAPI from "../services/WordAPI";
 import { toast } from 'react-toastify';
 
 
@@ -23,7 +23,7 @@ function AddEnWordPage(props) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const data = await EnWordsAPI.create(words)
+            const data = await WordAPI.create(words)
             toast.success("Registered successfully")
 
             setWords({
