@@ -77,6 +77,7 @@ export default function EnWordPage() {
                             <th>English Word</th>
                             <th>French Word</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -90,8 +91,15 @@ export default function EnWordPage() {
                                     <button
                                         onClick={() => handleDelete(word.id)}
 
-                                        className="btn btn-sm btn-danger">Supprimer
+                                        className="btn btn-sm btn-danger">Delete
                                     </button>
+                                </td>
+                                <td>
+                                    <Link
+                                        to={"/add_translation/" + word.id}
+
+                                        className="btn btn-sm btn-primary">Add translation
+                                    </Link>
                                 </td>
                             </tr>
                         )}

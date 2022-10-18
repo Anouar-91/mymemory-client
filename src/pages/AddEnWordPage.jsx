@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import {  useNavigate } from 'react-router-dom';
 import Field from "../components/forms/field";
 import EnWordsAPI from "../services/EnWordsAPI";
 import { toast } from 'react-toastify';
-import { ThreeDots } from 'react-loader-spinner'
-import axios from 'axios';
-
 
 
 function AddEnWordPage(props) {
@@ -23,7 +20,7 @@ function AddEnWordPage(props) {
         })
     }
 
-    const handleSubmit =async  (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         try {
             const data = await EnWordsAPI.create(words)
@@ -31,7 +28,7 @@ function AddEnWordPage(props) {
 
             setWords({
                 enWord: "",
-                frWord: "" 
+                frWord: ""
             })
             navigate("/en_words");
 
@@ -56,12 +53,12 @@ function AddEnWordPage(props) {
                         placeholder="English word">
                     </Field>
                     <div className="mt-3">
-                    <Field required value={words.frWord}
-                        onChange={handleChange}
-                        name="frWord"
-                        label="French word"
-                        placeholder="French word">
-                    </Field>
+                        <Field required value={words.frWord}
+                            onChange={handleChange}
+                            name="frWord"
+                            label="French word"
+                            placeholder="French word">
+                        </Field>
                     </div>
 
                     <div className="mt-3 text-center">

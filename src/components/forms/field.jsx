@@ -5,7 +5,7 @@ function field({name, label, value, onChange, placeholder, type="text", error = 
   return (
     <div className="form-group">
     <label htmlFor={name}>{label}</label>
-    <input required={required && "true" } onChange={onChange} value={value} type={type} placeholder={placeholder}
+    <input required={required ? true : false } onChange={onChange} value={value} type={type} placeholder={placeholder}
         className={(!error ? "form-control" : "form-control is-invalid")} id={name} name={name} />
     {error && <p className="invalid-feedback">{error}</p>}
 </div>

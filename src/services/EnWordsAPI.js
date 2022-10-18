@@ -47,6 +47,24 @@ function create(words){
 
     })
 }
+function addFrTranslation(word, id){
+    return axios.post(API_URL + "fr_words", {
+        content: word,
+        enWord: "/api/en_words/"+ id
+    }).then(async response => {
+        const cachedEnWords = await Cache.get('enWords');
+
+        if(cachedEnWords){
+            const index = cachedEnWords.findIndex(w => w.id === +id);
+            const newWord = await find(id);
+            cachedEnWords[index] = newWord;
+            Cache.set("enWords",cachedEnWords );
+
+        }
+        return response
+
+    })
+}
 
 function update(id, customer){
     return axios.put(API_URL + "customers/" + id, customer).then(async response => {
@@ -65,5 +83,6 @@ export default {
     delete: deleteCustomer,
     find,
     create, 
-    update
+    update,
+    addFrTranslation
 }
