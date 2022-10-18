@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AddEnWordPage from "./pages/AddEnWordPage";
 import AddTranslationPage from "./pages/AddTranslationPage";
 import UpdateWordsPage from "./pages/UpdateWordsPage";
+import QuizEnWordPage from "./pages/QuizEnWordPage";
 
 
 AuthAPI.setup();
@@ -33,6 +34,7 @@ function App() {
               <Route path="/en_words" element={<EnWordPage />} />
               <Route path="/add_translation/:id" element={<AddTranslationPage />} />
               <Route path="/update_words/:id" element={<UpdateWordsPage />} />
+              <Route path="/quiz_words" element={<QuizEnWordPage />} />
 
             </Route>
             <Route path="/login" element={<LoginPage  />} />

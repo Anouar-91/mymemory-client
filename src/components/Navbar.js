@@ -35,6 +35,9 @@ function Navbar() {
             <li className="nav-item">
               <Link className="nav-link" aria-current="page" to="/en_words">English Words</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" aria-current="page" to="/quiz_words">Quiz Word <i className="fa-solid fa-feather"></i></Link>
+            </li>
           </ul>
           <ul className="navbar-nav ml-auto ml-3 mt-3 mt-md-0">
             {!isAuthenticated ? (
