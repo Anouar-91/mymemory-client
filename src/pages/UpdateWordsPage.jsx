@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 
 function UpdateWordsPage() {
     const [enWord, setEnWord] = useState();
+    const navigate = useNavigate();
     const [copyEnWord, setCopyEnWord] = useState();
     const [frWords, setFrWords] = useState();
     const [loading, setLoading] = useState(true)
@@ -56,6 +57,8 @@ function UpdateWordsPage() {
     }
 
     const updateEnWord = () => {
+        setLoading(true)
+
         try {
             console.log(enWord, "handleChangeEnWord")
             const data = WordAPI.update(enWord);
@@ -66,12 +69,37 @@ function UpdateWordsPage() {
     }
 
     const updateFrWord = (id, word) => {
+        setLoading(true)
+
         try {
         
             const data = WordAPI.updateFrWord(id, word);
             toast.success("Registered successfully");
+            setLoading(false)
+
         } catch (error) {
             console.log(error)
+            setLoading(false)
+
+        }
+    }
+
+    const deleteFrWord = async(idFr, idEn) => {
+        setLoading(true)
+        try {
+            console.log(idFr, idEn)
+            const response = await WordAPI.deleteFrWord(idFr, idEn);
+            console.log(idFr, idEn)
+            toast.success("Deleted successfully");
+            navigate('/en_words')
+            setLoading(false)
+
+
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+
+
         }
     }
 
@@ -123,8 +151,11 @@ function UpdateWordsPage() {
                                             </Field>
                                         </div>
                                         <div className="col-2">
-                                            <button onClick={() => updateFrWord(word.id, frWords[word.id].content)} className="btn btn-warning mt-3"><i className="fa-solid fa-pen-to-square"></i></button>
+                                            <button onClick={() => updateFrWord(word.id, frWords[word.id].content)} className="btn btn-warning mt-3"><i className="fa-solid fa-pen-to-square"></i></button>&nbsp;&nbsp;
+                                            <button onClick={() => deleteFrWord(word.id, enWord.id)} className="btn btn-danger mt-3"><i className="fa-solid fa-trash-can"></i></button>
+
                                         </div>
+                
                                     </div>
                                 )
                             })}

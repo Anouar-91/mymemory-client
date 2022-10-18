@@ -33,15 +33,21 @@ function AddTranslationPage(props) {
 
     const handleSubmit =async  (e) => {
         e.preventDefault()
+        setLoading(true)
+
         try {
             const data = await WordAPI.addFrTranslation(frWord, id)
             toast.success("Registered successfully")
             setFrWord("")
             navigate("/en_words");
+            setLoading(false)
+
 
         } catch (error) {
             console.log(error)
             toast.error("Error")
+            setLoading(false)
+
         }
     }
 

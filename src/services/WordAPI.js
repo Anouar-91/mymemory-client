@@ -18,11 +18,23 @@ async function findAll(){
 }
 
 
-function deleteCustomer(id){
+function deleteEnWord(id){
     return axios.delete(API_URL + 'en_words/' + id).then(async response => {
         const cachedEnWords = await Cache.get('enWords');
         if(cachedEnWords){
             Cache.set("enWords", cachedEnWords.filter(word => word.id !== id));
+        }
+        return response
+    })
+}
+function deleteFrWord(idFr, idEn){
+    return axios.delete(API_URL + 'fr_words/' + idFr).then(async response => {
+        const cachedEnWords = await Cache.get('enWords');
+        if(cachedEnWords){
+            const enWord = await find(idEn);
+            const index = cachedEnWords.findIndex(w => w.id === idEn);
+            cachedEnWords[index] = enWord;
+            Cache.set("enWords",cachedEnWords );
         }
         return response
     })
@@ -94,7 +106,8 @@ function updateFrWord(id, word){
 
 export default {
     findAll,
-    delete: deleteCustomer,
+    delete: deleteEnWord,
+    deleteFrWord,
     find,
     create, 
     update,
