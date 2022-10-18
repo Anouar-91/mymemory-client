@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import WordAPI from '../services/WordAPI';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import {  useParams, useNavigate } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner'
 import Field from "../components/forms/field";
 import { toast } from 'react-toastify';
@@ -43,7 +43,6 @@ function UpdateWordsPage() {
     }, [])
     const handleChange = (e) => {
         const { value } = e.currentTarget;
-        const { name } = e.currentTarget;
         setEnWord({
             ...enWord ,
             content: value
@@ -56,12 +55,12 @@ function UpdateWordsPage() {
         setFrWords({ ...frWords, [name]: newObj })
     }
 
-    const updateEnWord = () => {
+    const updateEnWord =async () => {
         setLoading(true)
 
         try {
             console.log(enWord, "handleChangeEnWord")
-            const data = WordAPI.update(enWord);
+            await WordAPI.update(enWord);
             toast.success("Registered successfully");
             setLoading(false)
         } catch (error) {
@@ -70,12 +69,12 @@ function UpdateWordsPage() {
         }
     }
 
-    const updateFrWord = (id, word) => {
+    const updateFrWord = async (id, word) => {
         setLoading(true)
 
         try {
         
-            const data = WordAPI.updateFrWord(id, word);
+            await WordAPI.updateFrWord(id, word);
             toast.success("Registered successfully");
             setLoading(false)
 
@@ -90,7 +89,7 @@ function UpdateWordsPage() {
         setLoading(true)
         try {
             console.log(idFr, idEn)
-            const response = await WordAPI.deleteFrWord(idFr, idEn);
+            await WordAPI.deleteFrWord(idFr, idEn);
             console.log(idFr, idEn)
             toast.success("Deleted successfully");
             navigate('/en_words')

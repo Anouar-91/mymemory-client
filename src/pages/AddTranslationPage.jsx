@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import {  useParams, useNavigate } from 'react-router-dom';
 import Field from "../components/forms/field";
 import WordAPI from "../services/WordAPI";
 import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner'
-import axios from 'axios';
 
 
 
@@ -36,7 +35,7 @@ function AddTranslationPage(props) {
         setLoading(true)
 
         try {
-            const data = await WordAPI.addFrTranslation(frWord, id)
+            await WordAPI.addFrTranslation(frWord, id)
             toast.success("Registered successfully")
             setFrWord("")
             navigate("/en_words");
