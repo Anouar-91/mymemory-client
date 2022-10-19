@@ -49,7 +49,7 @@ export default function EnWordPage() {
         setCurrentPage(1)
     }
 
-    const itemsPerPage = 100;
+    const itemsPerPage = 1000;
 
     const filteredEnWords = enWords.filter(
         word =>
@@ -76,6 +76,8 @@ export default function EnWordPage() {
                             <th>Id</th>
                             <th>English Word</th>
                             <th>French Word</th>
+                            <th>Error</th>
+                            <th>Success</th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -88,6 +90,8 @@ export default function EnWordPage() {
                                 <td>{word.id}</td>
                                 <td>{word.content}</td>
                                 <td >{word.frWords.map((frWord) => frWord.content + ", ")}</td>
+                                <td>{word.nbError}</td>
+                                <td>{word.nbSuccess}</td>
                                 <td>
                                     <button
                                         onClick={() => handleDelete(word.id)}

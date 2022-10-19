@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Quiz from '../services/Quiz';
 import { ThreeDots } from 'react-loader-spinner';
 import InputQuestionWord from "../components/forms/InputQuestionWord";
-
+import WordAPI from '../services/WordAPI';
 
 
 function QuizEnWordPage() {
@@ -35,28 +35,37 @@ function QuizEnWordPage() {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        //setFormHide(true)
+        setLoading(true)
         let successArray = [];
         let errorArray = [];
+        let errorIdArray = [];
+        let successIdArray = [];
         randomEnWord.forEach((enWord, index) => {
             let ok = false;
             enWord.frWords.forEach((frWord, index) => {
                 if (frWord.content.toLowerCase() === answer[enWord.id].toLowerCase()) {
                     ok = true;
                     successArray.push(enWord);
+                    successIdArray.push(enWord.id)
                 }
             })
             if (!ok) {
                 errorArray.push(enWord);
+                errorIdArray.push(enWord.id)
             }
         })
+        try {
+            await WordAPI.incrementError(errorIdArray);
+            await WordAPI.incrementSuccess(successIdArray);
+        } catch (error) {
+            console.log(error)
+        }
+  
         setErrors(errorArray);
         setSuccess(successArray);
         setFormHide(true)
-        console.log(errorArray);
-        console.log(successArray);
     }
 
     const restart = () => {
@@ -65,7 +74,6 @@ function QuizEnWordPage() {
         setErrors();
         setSuccess();
         fetchRandomEnWord();
-
     }
 
     return (
@@ -73,7 +81,7 @@ function QuizEnWordPage() {
             <div className="text-center">
                 <h1>Quiz English Word</h1>
             </div>
-            <div className="card mt-5 mb-5">
+            <div className={formHide ? "d-none" : "card mt-5 mb-5"}>
                 {loading ? (
                     <ThreeDots
                         height="80"
@@ -87,7 +95,7 @@ function QuizEnWordPage() {
                     />
                 ) : (
                     <>
-                        <form className={formHide && "d-none"} onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit}>
                             {randomEnWord.map((enWord, index) => {
                                 return (
                                     <>
@@ -106,37 +114,45 @@ function QuizEnWordPage() {
                                 <button className="btn btn-primary">Submit</button>
                             </div>
                         </form>
-                        {formHide &&
-                        <>
-                            <div className="row mb-3 justify-content-center">
-                                <div className="col-md-5 mt-3 text-center" >
-                                    <h3 className="text-danger">List of errors</h3>
-                                    {errors.map((error, index) => {
-                                        return(
-                                            <p key={index}>{error.content}</p>
-                                        )
-                        
-                                    })}
-                                </div>
-                                <div className="col-md-5 mt-3 text-center">
-                                    <h3 className="text-success">List of success</h3>
-                                    {success.map((word, index) => {
-                                        return(
-                                            <p key={index}>{word.content}</p>
-                                        )
-                                
-                                    })}
-                                </div>
-                            </div>
-                            <div className="text-center mt-4">
-                                <button onClick={() => restart()} className="btn btn-primary">Restart</button>
-                            </div>
-                            </>
-                        }
                     </>
                 )
                 }
             </div>
+            {formHide &&
+                <>
+                    <div className="row mb-3 justify-content-center">
+                        <div className="col-md-5 mt-3 text-center" >
+                            <div className="card">
+                                <h3 className="text-danger">List of errors</h3>
+                                {errors.map((error, index) => {
+                                    return (
+                                        <p key={index}><strong>{error.content}</strong>, <br /> vous avez écris : <span className="text-danger">{answer[error.id].toLowerCase()}</span> , <br />
+                                            au lieu de {error.frWords.map((word, index) => { return (<> <span className="text-success">{word.content} </span> {error.frWords[index + 1] && "ou "}</>) })}
+                                        </p>
+                                    )
+                                })}
+                            </div>
+
+                        </div>
+                        <div className="col-md-5 mt-3 text-center">
+                            <div className="card">
+                                <h3 className="text-success">List of success</h3>
+                                {success.map((word, index) => {
+                                    return (
+                                        <p key={index}>{word.content}</p>
+                                    )
+
+                                })}
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div className="text-center mt-4">
+                        <button onClick={() => restart()} className="btn btn-primary">Restart</button>
+                    </div>
+                </>
+            }
         </>
     )
 }

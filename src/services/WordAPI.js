@@ -104,6 +104,44 @@ function updateFrWord(id, word){
     }).catch(error =>console.log(error))
 }
 
+function incrementError(arrayIdError){
+    return axios.post(API_URL + "en_words_increment/error", {enWords:arrayIdError}).then(async response => {
+        console.log(response, 'reusssi')
+        const cachedEnWords = await Cache.get('enWords');
+        if(cachedEnWords){
+            arrayIdError.forEach((id) => {
+                const index = cachedEnWords.findIndex(w => w.id === id);
+                cachedEnWords[index] = {
+                    ...cachedEnWords[index], 
+                    nbError: cachedEnWords[index].nbError + 1
+                } ;
+            })
+
+            Cache.set("enWords",cachedEnWords );
+        }
+        return response
+    }).catch(error =>console.log(error))
+}
+
+function incrementSuccess(arrayIdSucces){
+    return axios.post(API_URL + "en_words_increment/error", {enWords:arrayIdSucces}).then(async response => {
+        console.log(response, 'reusssi')
+        const cachedEnWords = await Cache.get('enWords');
+        if(cachedEnWords){
+            arrayIdSucces.forEach((id) => {
+                const index = cachedEnWords.findIndex(w => w.id === id);
+                cachedEnWords[index] = {
+                    ...cachedEnWords[index], 
+                    nbSuccess: cachedEnWords[index].nbSuccess + 1
+                } ;
+            })
+
+            Cache.set("enWords",cachedEnWords );
+        }
+        return response
+    }).catch(error =>console.log(error))
+}
+
 export default {
     findAll,
     delete: deleteEnWord,
@@ -112,5 +150,7 @@ export default {
     create, 
     update,
     addFrTranslation,
-    updateFrWord
+    updateFrWord,
+    incrementError,
+    incrementSuccess
 }
