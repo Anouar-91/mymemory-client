@@ -30,7 +30,7 @@ function ModalEnWord({ word, handleDelete }) {
                             )}
                         </ul>
                     </div>
-                    <div className="modal-footer">
+                    <div className="modal-footer d-flex justify-content-space-around">
                         <button
                             onClick={() => handleDelete(word.id)}
 
@@ -40,7 +40,7 @@ function ModalEnWord({ word, handleDelete }) {
                             onClick={() => update()}
                             to={"/update_words/" + word.id}
 
-                            className="btn btn-sm btn-warning"><i className="fa-solid fa-pen-to-square"></i>
+                            className="btn btn-sm btn-warning"><i className="fa-solid fa-pen-to-square"></i> Update
                         </button>
                         <button
                             onClick={() => addTranslation()}
