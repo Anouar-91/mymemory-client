@@ -46,7 +46,7 @@ function Navbar() {
                   <Link to="/register" className="nav-link">Register</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={"login"} className="btn btn-success">Login</Link>
+                  <Link to={"login"} className="btn btn-primary">Login</Link>
                 </li></>)
               : (
                 <li className="nav-item">

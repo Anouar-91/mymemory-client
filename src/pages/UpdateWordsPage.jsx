@@ -33,7 +33,7 @@ function UpdateWordsPage() {
 
     }
 
-    useEffect(() => {
+    useEffect(() => {  
         fetchEnWord(id)
         if (frWords) {
             console.log(frWords.length)

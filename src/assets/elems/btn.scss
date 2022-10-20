@@ -1,0 +1,28 @@
+.btn-primary{
+    border: 1px solid $default-color;
+    color:white !important;
+    background-color:$default-color!important;
+    &:hover{
+        background-color:transparent !important;
+        color: $default-color !important;
+        border: 1px solid $default-color;
+    }
+}
+.btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
+    color: $default-color !important;
+    border: 1px solid $default-color;
+    background-color:transparent !important;
+}
+
+
+.btn-secondary{
+    border: 1px solid $second-color;
+    color: $second-color !important;
+    background-color:transparent !important;
+    &:hover{
+        color:white !important;
+        border: 1px solid $second-color;
+        background-color:$second-color!important;
+
+    }
+}
