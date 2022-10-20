@@ -73,6 +73,7 @@ function RegisterPage() {
                                 <div className="row mb-3">
                                     <div className="col-6">
                                         <Field
+                                        required
                                             name="firstname"
                                             label="Prénom"
                                             placeholder="Votre prénom"
@@ -84,6 +85,7 @@ function RegisterPage() {
                                     </div>
                                     <div className="col-6">
                                         <Field
+                                        required
                                             name="lastname"
                                             label="Nom"
                                             placeholder="Votre nom"
@@ -95,6 +97,7 @@ function RegisterPage() {
                                 </div>
                                 <div className="mb-3">
                                     <Field
+                                    required
                                         name="email"
                                         label="Email"
                                         placeholder="Votre email"
@@ -106,6 +109,7 @@ function RegisterPage() {
                                 </div>
                                 <div className="mb-3">
                                     <Field
+                                    required
                                         name="password"
                                         label="Votre mot de passe"
                                         placeholder="Votre mot de passe"
