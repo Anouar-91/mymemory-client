@@ -149,7 +149,7 @@ function QuizEnWordPage() {
                         </div>
                     </div>
                     <div className="text-center mt-4">
-                        <button onClick={() => restart()} className="btn btn-primary">Restart</button>
+                        <button onClick={() => restart()} className="btn btn-primary mb-5">Restart</button>
                     </div>
                 </>
             }
