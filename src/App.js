@@ -13,6 +13,7 @@ import AddEnWordPage from "./pages/AddEnWordPage";
 import AddTranslationPage from "./pages/AddTranslationPage";
 import UpdateWordsPage from "./pages/UpdateWordsPage";
 import QuizEnWordPage from "./pages/QuizEnWordPage";
+import RegisterPage from "./pages/RegisterPage";
 
 
 AuthAPI.setup();
@@ -38,7 +39,8 @@ function App() {
 
             </Route>
             <Route path="/login" element={<LoginPage  />} />
-
+            <Route path="/register" element={<RegisterPage  />} />
+            
             <Route path="/" element={<HomePage />} />
           </Routes>
         </div>
