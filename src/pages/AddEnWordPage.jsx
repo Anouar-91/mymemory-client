@@ -23,7 +23,7 @@ function AddEnWordPage(props) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const data = await WordAPI.create(words)
+            await WordAPI.create(words)
             toast.success("Registered successfully")
 
             setWords({

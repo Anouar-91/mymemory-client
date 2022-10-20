@@ -70,7 +70,7 @@ export default function EnWordPage() {
                 <input type="text" placeholder="Rechercher..." value={search} onChange={handleSearch} className="form-control" />
             </div>
             {!loading ? (
-                <table className="table table-hover table-responsive">
+                <table  className="table table-hover table-responsive">
                     <thead>
                         <tr>
                             <th>Id</th>
