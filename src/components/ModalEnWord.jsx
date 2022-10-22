@@ -29,7 +29,12 @@ function ModalEnWord({ word, handleDelete }) {
                                 <li key={frWord.id}>{frWord.content}</li>
                             )}
                         </ul>
+                        <hr />
+                        <p><span className="text-danger">Error :</span> {word.nbError}</p>
+                        <p><span className="text-success">Success :</span> {word.nbSuccess}</p>
                     </div>
+          
+
                     <div className="modal-footer d-flex justify-content-space-around">
                         <button
                             onClick={() => handleDelete(word.id)}

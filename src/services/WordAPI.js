@@ -4,6 +4,7 @@ import {API_URL} from './Config'
 
 
 async function findAll(){
+    console.log(API_URL)
     const cachedEnWords = await Cache.get('enWords');
     if(cachedEnWords){
         return cachedEnWords;
