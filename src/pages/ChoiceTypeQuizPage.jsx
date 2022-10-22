@@ -6,7 +6,7 @@ function ChoiceTypeQuizPage() {
         <>
             <h1 className="text-center">Choisis un mode : </h1>
             <div className="row mt-5 justify-content-center">
-                <div className="col-md-4">
+                <div className="col-md-4 col-6">
                     <div className="card mb-3" >
                     <div className="card-header text-primary text-center h4"><strong>English to french</strong></div>
                         <div className="card-body">
@@ -18,7 +18,7 @@ function ChoiceTypeQuizPage() {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 col-6">
                     <div className="card mb-3" >
                         <div className="card-header text-primary text-center h4"><strong>French to english</strong></div>
                         <div className="card-body">
