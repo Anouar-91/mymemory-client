@@ -45,7 +45,7 @@ function QuizEnWordPage() {
         randomEnWord.forEach((enWord, index) => {
             let ok = false;
             enWord.frWords.forEach((frWord, index) => {
-                if (frWord.content.toLowerCase() === answer[enWord.id].toLowerCase()) {
+                if (frWord.content.toLowerCase() === answer[enWord.id].toLowerCase().trim()) {
                     ok = true;
                     successArray.push(enWord);
                     successIdArray.push(enWord.id)

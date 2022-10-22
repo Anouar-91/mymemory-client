@@ -48,7 +48,10 @@ function find(id){
 }
 
 function create(words){
-    return axios.post(API_URL + "en_fr_words/add", words).then(async response => {
+    return axios.post(API_URL + "en_fr_words/add", {
+        enWord: words.enWord.trim(),
+        frWord: words.frWord.trim()
+    }).then(async response => {
         const cachedEnWords = await Cache.get('enWords');
         console.log('je suis avant')
 
