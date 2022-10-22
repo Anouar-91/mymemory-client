@@ -14,6 +14,8 @@ import AddTranslationPage from "./pages/AddTranslationPage";
 import UpdateWordsPage from "./pages/UpdateWordsPage";
 import QuizEnWordPage from "./pages/QuizEnWordPage";
 import RegisterPage from "./pages/RegisterPage";
+import ChoiceTypeQuizPage from "./pages/ChoiceTypeQuizPage";
+import QuizFrWordPage from "./pages/QuizFrWordPage";
 
 
 AuthAPI.setup();
@@ -35,7 +37,9 @@ function App() {
               <Route path="/en_words" element={<EnWordPage />} />
               <Route path="/add_translation/:id" element={<AddTranslationPage />} />
               <Route path="/update_words/:id" element={<UpdateWordsPage />} />
-              <Route path="/quiz_words" element={<QuizEnWordPage />} />
+              <Route path="/quiz_en_words" element={<QuizEnWordPage />} />
+              <Route path="/quiz_fr_words" element={<QuizFrWordPage />} />
+              <Route path="/choice_quiz" element={<ChoiceTypeQuizPage />} />
 
             </Route>
             <Route path="/login" element={<LoginPage  />} />

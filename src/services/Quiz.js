@@ -14,7 +14,7 @@ async function  generateRandomEnWord(){
     for(let i = 0; i < max; i++) {
 
         let nbRandom = getRandomInt(enWords.length)
-        if(arrayRandom.includes(nbRandom)){
+        if(arrayRandom.includes(nbRandom) || enWords[nbRandom].frWords.length < 1){
             i--
         }else{
             arrayRandom.push(nbRandom);

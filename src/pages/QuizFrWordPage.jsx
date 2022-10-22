@@ -5,7 +5,7 @@ import InputQuestionWord from "../components/forms/InputQuestionWord";
 import WordAPI from '../services/WordAPI';
 
 
-function QuizEnWordPage() {
+function QuizFrWordPage() {
     const [randomEnWord, setRandomEnWord] = useState()
     const [loading, setLoading] = useState(true);
     const [answer, setAnswer] = useState([]);
@@ -44,13 +44,18 @@ function QuizEnWordPage() {
         let successIdArray = [];
         randomEnWord.forEach((enWord, index) => {
             let ok = false;
-            enWord.frWords.forEach((frWord, index) => {
+            if(answer[enWord.id].toLowerCase().trim() === enWord.content.toLowerCase().trim()){
+                ok = true;
+                successArray.push(enWord);
+                successIdArray.push(enWord.id)
+            }
+            /* enWord.frWords.forEach((frWord, index) => {
                 if (frWord.content.toLowerCase() === answer[enWord.id].toLowerCase().trim()) {
                     ok = true;
                     successArray.push(enWord);
                     successIdArray.push(enWord.id)
                 }
-            })
+            }) */
             if (!ok) {
                 errorArray.push(enWord);
                 errorIdArray.push(enWord.id)
@@ -101,9 +106,14 @@ function QuizEnWordPage() {
                                     <>
                                         <div key={index} className="mt-3">
                                             <InputQuestionWord required value={answer[enWord.id]}
+                                                mode="fr"
                                                 onChange={handleChange}
                                                 name={enWord.id}
-                                                label={enWord.content}
+                                                label={enWord.frWords.length > 1 ? (
+                                                    enWord.frWords.map(frWord =>{ return (
+                                                        frWord.content + " / "
+                                                    )} )
+                                                ) : ( enWord.frWords[0].content)}
                                                 placeholder="Your answer">
                                             </InputQuestionWord>
                                         </div>
@@ -122,12 +132,16 @@ function QuizEnWordPage() {
                 <>
                     <div className="row mb-3 justify-content-center">
                         <div className="col-md-5 mt-3 text-center" >
-                            <div className="card">
+                            <div className="card-primary">
                                 <h3 className="text-danger">List of errors</h3>
                                 {errors.map((error, index) => {
                                     return (
-                                        <p key={index}><strong>{error.content}</strong>, <br /> vous avez écris : <span className="text-danger">{answer[error.id].toLowerCase()}</span> , <br />
-                                            au lieu de {error.frWords.map((word, index) => { return (<> <span className="text-success">{word.content} </span> {error.frWords[index + 1] && "ou "}</>) })}
+                                        <p key={index}><strong>{error.frWords.length > 1 ? (
+                                            error.frWords.map(frWord =>{ return (
+                                                frWord.content + " / "
+                                            )} )
+                                        ) : ( error.frWords[0].content)}</strong>, <br /> vous avez écris : <span className="text-danger">{answer[error.id].toLowerCase()}</span> , <br />
+                                            au lieu de {error.content} 
                                         </p>
                                     )
                                 })}
@@ -135,7 +149,7 @@ function QuizEnWordPage() {
 
                         </div>
                         <div className="col-md-5 mt-3 text-center">
-                            <div className="card">
+                            <div className="card-primary">
                                 <h3 className="text-success">List of success</h3>
                                 {success.map((word, index) => {
                                     return (
@@ -157,4 +171,4 @@ function QuizEnWordPage() {
     )
 }
 
-export default QuizEnWordPage
+export default QuizFrWordPage

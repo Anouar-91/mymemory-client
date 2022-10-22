@@ -51,7 +51,7 @@ function LoginPage() {
             <h1 className="h1 text-center">Connexion à l'application</h1>
             <div className="row mt-5 justify-content-center">
                 <div className="col-md-8">
-                    <div className="card p-5">
+                    <div className="card-primary">
                     {!loading  ?(
                         <form onSubmit={handleSubmit} >
                             <Field name="username" label="Adresse email" value={credentials.username} onChange={handleChange} placeholder="Email de connexion" type="email" error={error} />
