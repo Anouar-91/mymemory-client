@@ -60,7 +60,7 @@ function LoginPage() {
 
 
                             <div className="form-group mt-3 text-center">
-                                <button className="btn btn-success">Connexion</button>
+                                <button className="btn btn-primary">Connexion</button>
                             </div>
                         </form>
                         ):(
