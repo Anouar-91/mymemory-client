@@ -4,18 +4,30 @@ import {API_URL} from './Config'
 
 
 async function findAll(){
-    console.log(API_URL)
     const cachedEnWords = await Cache.get('enWords');
     if(cachedEnWords){
         return cachedEnWords;
     } 
-    
     return axios.get(API_URL + 'en_words')
       .then(response =>{
         const enWords = response.data["hydra:member"];
         Cache.set("enWords", enWords);
         return enWords
       } );
+}
+
+async function getRate(){
+    const enWords = await findAll();
+    let countError = 0;
+    let countSuccess = 0;
+    enWords.forEach((word) => {
+        countError = countError + word.nbError;
+        countSuccess = countSuccess + word.nbSuccess;
+        console.log(word)
+    })
+    console.log(countError)
+    let result = countSuccess / countError;
+    return result;
 }
 
 
@@ -125,7 +137,9 @@ function incrementError(arrayIdError){
 }
 
 function incrementSuccess(arrayIdSucces){
-    return axios.post(API_URL + "en_words_increment/error", {enWords:arrayIdSucces}).then(async response => {
+    console.log(arrayIdSucces, "tab id")
+    return axios.post(API_URL + "en_words_increment/success", {enWords:arrayIdSucces})
+    .then(async response => {
         console.log(response, 'reusssi')
         const cachedEnWords = await Cache.get('enWords');
         if(cachedEnWords){
@@ -140,7 +154,8 @@ function incrementSuccess(arrayIdSucces){
             Cache.set("enWords",cachedEnWords );
         }
         return response
-    }).catch(error =>console.log(error))
+    })
+    .catch(error =>console.log(error))
 }
 
 export default {
@@ -153,5 +168,6 @@ export default {
     addFrTranslation,
     updateFrWord,
     incrementError,
-    incrementSuccess
+    incrementSuccess,
+    getRate
 }

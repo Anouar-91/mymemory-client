@@ -12,10 +12,14 @@ export default function EnWordPage() {
     const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true)
+    const [rate, setRate] = useState(0)
 
     const fetchEnWords = async () => {
         try {
             const data = await WordAPI.findAll();
+            const result = await WordAPI.getRate()
+            console.log(result)
+            setRate(result);
             setEnWords(data)
             setLoading(false)
         } catch (error) {
@@ -73,7 +77,10 @@ export default function EnWordPage() {
                 <input type="text" placeholder="Rechercher..." value={search} onChange={handleSearch} className="form-control" />
             </div>
             {!loading ? (
-          
+                <> 
+                      <div className="progress mt-3">
+                <div className="progress-bar" role="progressbar" aria-label="Example with label" style={{width: `${rate}%`}} aria-valuenow={rate} aria-valuemin="0" aria-valuemax="100">{rate}%</div>
+              </div>
                     <table className="table table-hover table-responsive">
                         <thead>
                             <tr>
@@ -96,6 +103,7 @@ export default function EnWordPage() {
                             )}
                         </tbody>
                     </table>
+                    </>
               
              
             ) : (
