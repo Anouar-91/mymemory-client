@@ -43,7 +43,7 @@ function AddEnWordPage(props) {
             <div className="text-center">
                 <h1 className="mb-5 h1">Add a new word</h1>
             </div>
-            <div className="card">
+            <div className="card-primary">
 
                 <form onSubmit={handleSubmit}>
                     <Field required value={words.enWord}
