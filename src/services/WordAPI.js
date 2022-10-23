@@ -53,8 +53,6 @@ function create(words){
         frWord: words.frWord.trim()
     }).then(async response => {
         const cachedEnWords = await Cache.get('enWords');
-        console.log('je suis avant')
-
         if(cachedEnWords){
             Cache.set("enWords", [response.data, ...cachedEnWords]);
         }
