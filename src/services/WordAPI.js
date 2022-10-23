@@ -20,14 +20,18 @@ async function getRate(){
     const enWords = await findAll();
     let countError = 0;
     let countSuccess = 0;
+    let result = 0;
     enWords.forEach((word) => {
         countError = countError + word.nbError;
         countSuccess = countSuccess + word.nbSuccess;
-        console.log(word)
     })
-    console.log(countError)
-    let result = countSuccess / countError;
-    return result;
+    let count = countError + countSuccess;
+    if(count > 0){
+        result = countSuccess / count
+    }
+    console.log(countError, "error")
+    console.log(countSuccess, "success")
+    return Math.round(result * 100);
 }
 
 
