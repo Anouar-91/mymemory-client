@@ -56,8 +56,7 @@ function create(words){
         console.log('je suis avant')
 
         if(cachedEnWords){
-            console.log('je suis dans le ache')
-            Cache.set("enWords", [...cachedEnWords, response.data]);
+            Cache.set("enWords", [response.data, ...cachedEnWords]);
         }
         return response
 
