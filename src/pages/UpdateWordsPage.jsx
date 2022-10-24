@@ -125,7 +125,7 @@ function UpdateWordsPage() {
                     <div className="text-center">
                         <h1>Update</h1>
                     </div>
-                    <div className="mt-4 card">
+                    <div className="mt-4 card-primary">
                             <div className="row align-items-center">
                                 <div className="col-10">
                                     <Field required value={enWord.content}

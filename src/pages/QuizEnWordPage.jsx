@@ -122,7 +122,7 @@ function QuizEnWordPage() {
                 <>
                     <div className="row mb-3 justify-content-center">
                         <div className="col-md-5 mt-3 text-center" >
-                            <div className="card">
+                            <div className="card-primary">
                                 <h3 className="text-danger">List of errors</h3>
                                 {errors.map((error, index) => {
                                     return (
@@ -135,7 +135,7 @@ function QuizEnWordPage() {
 
                         </div>
                         <div className="col-md-5 mt-3 text-center">
-                            <div className="card">
+                            <div className="card-primary">
                                 <h3 className="text-success">List of success</h3>
                                 {success.map((word, index) => {
                                     return (
