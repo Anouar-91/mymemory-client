@@ -57,7 +57,7 @@ export default function EnWordPage() {
         setCurrentPage(1)
     }
 
-    const itemsPerPage = 1000;
+    const itemsPerPage = 10;
 
     const filteredEnWords = enWords.filter(
         word =>

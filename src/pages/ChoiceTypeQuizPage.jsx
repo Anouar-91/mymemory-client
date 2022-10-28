@@ -31,7 +31,7 @@ function ChoiceTypeQuizPage() {
                     </div>
                     <div className="col-md-6 mt-3">
                         <div className="card-shadow text-center">
-                            <h2>French to french</h2>
+                            <h2>French to english</h2>
                             <div className="d-flex align-items-center">
                                 <div className="col-3">
                                     <img src={frWordQuestion} alt="illustration" className="img-fluid w-75" />
