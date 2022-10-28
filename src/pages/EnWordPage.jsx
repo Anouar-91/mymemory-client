@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner';
 import WordAPI from '../services/WordAPI';
 import ModalEnWord from '../components/ModalEnWord';
+import enwordIllustration from '../assets/img/enWord-illustration.png';
 
 export default function EnWordPage() {
 
@@ -69,14 +70,23 @@ export default function EnWordPage() {
     return (
         <>
             <div className="container mt-3">
-                <div className="d-flex justify-content-between align-items-center">
-                    <h1>List of words</h1>
-                    <Link to="/en_words/new" className="btn btn-primary">New word</Link>
+                <div className="row justify-content-center align-items-center">
+                    <div className="col-md-8">
+                        <div className="title-table-enword text-light d-flex justify-content-space-around align-items-center">
+                            <h1>List of words</h1>
+                            <Link to="/en_words/new" className="btn btn-primary">New word</Link>
+                        </div>
+                        <div className="form-group mb-5 mt-5">
+                            <input type="text" placeholder="Search..." value={search} onChange={handleSearch} className="form-control" />
+                        </div>
+                    </div>
+                    <div className="col-md-4">
+                        <img src={enwordIllustration} className="img-fluid" alt="" />
+                    </div>
                 </div>
 
-                <div className="form-group mb-5 mt-5">
-                    <input type="text" placeholder="Rechercher..." value={search} onChange={handleSearch} className="form-control" />
-                </div>
+
+
                 {!loading ? (
                     <>
                         <div className="progress mt-3">

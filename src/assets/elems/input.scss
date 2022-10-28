@@ -1,0 +1,6 @@
+.form-control{
+    &:focus{
+        border-color: $third-color !important;
+        box-shadow: 0 0 0 0.25rem rgba(200, 8, 8, 0.25);
+    }
+}

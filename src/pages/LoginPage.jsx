@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from '../contexts/AuthContext';
 import Field from "../components/forms/field"
 import { toast } from 'react-toastify';
-import { ThreeDots } from 'react-loader-spinner'
+import { ThreeDots } from 'react-loader-spinner';
+import loginIllustration from '../assets/img/login-illustration.png';
 
 function LoginPage() {
     const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
@@ -48,42 +49,45 @@ function LoginPage() {
     }
     return (
         <>
-        <div className="container-fluid card-bg-primary">
-        <div className="p-5">
-        <h1 className="h1 text-center">Connexion à l'application</h1>
-            <div className="row mt-5 justify-content-center">
-                <div className="col-md-8">
-              
-                        {!loading ? (
-                            <form onSubmit={handleSubmit} >
-                                <Field name="username" label="Email" value={credentials.username} onChange={handleChange} placeholder="Email de connexion" type="email" error={error} />
-                                <div className="mt-3">
+            <div className="container-fluid card-bg-primary position-relative">
+                <div className="p-5">
+                    <h1 className="h1 text-center">Connexion à l'application</h1>
+                    <div className="row mt-5 justify-content-center">
+                        <div className="col-md-8">
 
-              
-                                <Field name="password" label="Password" value={credentials.password} onChange={handleChange} placeholder="Mot de passe" type="password" error="" />
-                                </div>
+                            {!loading ? (
+                                <form onSubmit={handleSubmit} >
+                                    <Field name="username" label="Email" value={credentials.username} onChange={handleChange} placeholder="Email de connexion" type="email" error={error} />
+                                    <div className="mt-3">
 
-                                <div className="form-group mt-3 text-center">
-                                    <button className="btn btn-secondary">Connexion</button>
-                                </div>
-                            </form>
-                        ) : (
-                            <ThreeDots
-                                height="80"
-                                width="80"
-                                radius="9"
-                                color="#0d6efd"
-                                ariaLabel="three-dots-loading"
-                                wrapperStyle={{ marginLeft: '50%', transform: 'translateX(-10%)' }}
-                                wrapperClassName=""
-                                visible={true}
-                            />
-                        )}
-        
+
+                                        <Field name="password" label="Password" value={credentials.password} onChange={handleChange} placeholder="Mot de passe" type="password" error="" />
+                                    </div>
+
+                                    <div className="form-group mt-3 text-center">
+                                        <button className="btn btn-secondary">Connexion</button>
+                                    </div>
+                                </form>
+                                
+                            ) : (
+                                <ThreeDots
+                                    height="80"
+                                    width="80"
+                                    radius="9"
+                                    color="#0d6efd"
+                                    ariaLabel="three-dots-loading"
+                                    wrapperStyle={{ marginLeft: '50%', transform: 'translateX(-10%)' }}
+                                    wrapperClassName=""
+                                    visible={true}
+                                />
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
+            <div className="text-center d-md-block d-none" style={{position: 'absolute', bottom:"125px", left:"50%", transform: 'translateX(-50%)'}}>
+                <img src={loginIllustration} alt="" />
+            </div>
 
 
         </>

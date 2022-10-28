@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Field from '../components/forms/field';
 import UsersAPI from '../services/UsersAPI';
 import { toast } from 'react-toastify';
+import registerIllustration from '../assets/img/register-illustration.png';
 
 
 function RegisterPage() {
@@ -61,83 +62,88 @@ function RegisterPage() {
 
     return (
         <>
-            <div className="text-center">
+
+            <div className="container-fluid card-bg-primary position-relative">
                 <h1 className="h1">Inscription</h1>
-
-            </div>
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-7">
-                        <div className="card-primary p-4">
-                            <form onSubmit={handleSubmit}>
-                                <div className="row mb-3">
-                                    <div className="col-6">
-                                        <Field
-                                        required
-                                            name="firstname"
-                                            label="Prénom"
-                                            placeholder="Votre prénom"
-                                            value={user.firstname}
-                                            onChange={handleChange}
-                                            error={errors.firstname}
-                                        ></Field>
-
-                                    </div>
-                                    <div className="col-6">
-                                        <Field
-                                        required
-                                            name="lastname"
-                                            label="Nom"
-                                            placeholder="Votre nom"
-                                            value={user.lastname}
-                                            onChange={handleChange}
-                                            error={errors.lastname}
-                                        ></Field>
-                                    </div>
-                                </div>
-                                <div className="mb-3">
+                <div className="row justify-content-center p-5">
+                    <div className="col-md-8">
+                    <form onSubmit={handleSubmit}>
+                            <div className="row mb-3">
+                                <div className="col-6">
                                     <Field
-                                    required
-                                        name="email"
-                                        label="Email"
-                                        placeholder="Votre email"
-                                        value={user.email}
+                                        required
+                                        name="firstname"
+                                        label="Your firsname"
+                                        placeholder="Your firstname"
+                                        value={user.firstname}
                                         onChange={handleChange}
-                                        error={errors.email}
-                                        type='email'
+                                        error={errors.firstname}
+                                    ></Field>
+
+                                </div>
+                                <div className="col-6">
+                                    <Field
+                                        required
+                                        name="lastname"
+                                        label="Lastname"
+                                        placeholder="Your lastname"
+                                        value={user.lastname}
+                                        onChange={handleChange}
+                                        error={errors.lastname}
                                     ></Field>
                                 </div>
-                                <div className="mb-3">
-                                    <Field
-                                    required
-                                        name="password"
-                                        label="Votre mot de passe"
-                                        placeholder="Votre mot de passe"
-                                        value={user.password}
-                                        onChange={handleChange}
-                                        error={errors.password}
-                                        type="password"
-                                    ></Field>
-                                </div>
-
+                            </div>
+                            <div className="mb-3">
                                 <Field
-                                    name="confirmPassword"
-                                    label="Confirmer votre mot de passe"
-                                    placeholder="Confirmation mot de passe"
-                                    value={user.confirmPassword}
+                                    required
+                                    name="email"
+                                    label="Email"
+                                    placeholder="Your email"
+                                    value={user.email}
                                     onChange={handleChange}
-                                    error={errors.passwordConfirm}
+                                    error={errors.email}
+                                    type='email'
+                                ></Field>
+                            </div>
+                            <div className="mb-3">
+                                <Field
+                                    required
+                                    name="password"
+                                    label="Password"
+                                    placeholder="Your password"
+                                    value={user.password}
+                                    onChange={handleChange}
+                                    error={errors.password}
                                     type="password"
                                 ></Field>
-                                <div className="form-group mt-3 text-center">
-                                    <button className="btn btn-primary">Submit</button>
-                                    <Link to="/login" className="btn btn-link">J'ai déjà un compte</Link>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+
+                            <Field
+                                name="confirmPassword"
+                                label="Confirm your password"
+                                placeholder="password"
+                                value={user.confirmPassword}
+                                onChange={handleChange}
+                                error={errors.passwordConfirm}
+                                type="password"
+                            ></Field>
+                            <div className="form-group mt-3 text-center">
+
+                                <button className="btn btn-secondary">Submit</button>
+                                <p>Already have an account ?<Link to="/login" className="btn btn-link"> <strong>Sign in</strong> </Link></p>
+
+                            </div>
+                        </form>
                     </div>
+
+              
+
                 </div>
             </div>
+            <div className="text-center d-md-block d-none" style={{position: 'absolute', bottom:"90px", left:"16%", transform: 'translateX(-50%)'}}>
+                <img src={registerIllustration} alt="" />
+            </div>
+
 
 
         </>
