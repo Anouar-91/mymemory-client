@@ -68,61 +68,62 @@ export default function EnWordPage() {
 
     return (
         <>
-            <div className="d-flex justify-content-between align-items-center">
-                <h1>List of words</h1>
-                <Link to="/en_words/new" className="btn btn-primary">New word</Link>
-            </div>
-
-            <div className="form-group mb-5 mt-5">
-                <input type="text" placeholder="Rechercher..." value={search} onChange={handleSearch} className="form-control" />
-            </div>
-            {!loading ? (
-                <> 
-                      <div className="progress mt-3">
-                <div className="progress-bar" role="progressbar" aria-label="Example with label" style={{width: `${rate}%`}} aria-valuenow={rate} aria-valuemin="0" aria-valuemax="100">{rate}%</div>
-              </div>
-                    <table className="table table-hover table-responsive">
-                        <thead>
-                            <tr>
-                                <th>English Word</th>
-                                <th>French Word</th>
-   
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            {paginatedWords.map((word) =>
-                                  <>
-                                <tr key={word.id} data-bs-toggle="modal" data-bs-target={"#word" + word.id}>
-                                    <td>{word.content}</td>
-                                    <td >{word.frWords.map((frWord) => frWord.content + ", ")}</td>
-                                </tr>
-
-                                      <ModalEnWord id={"modal" + word.id} word={word} handleDelete={handleDelete}/>
-                                      </>
-                            )}
-                        </tbody>
-                    </table>
-                    </>
-              
-             
-            ) : (
-                <div className="text-center">
-                    <ThreeDots
-                        height="80"
-                        width="80"
-                        radius="9"
-                        color="#0d6efd"
-                        ariaLabel="three-dots-loading"
-                        wrapperStyle={{ marginLeft: '50%', transform: 'translateX(-10%)' }}
-                        wrapperClassName=""
-                        visible={true}
-                    />
+            <div className="container mt-3">
+                <div className="d-flex justify-content-between align-items-center">
+                    <h1>List of words</h1>
+                    <Link to="/en_words/new" className="btn btn-primary">New word</Link>
                 </div>
 
-            )}
-            <Pagination currentPage={currentPage} itemsPerPage={itemsPerPage} length={filteredEnWords.length} onPageChange={handleChangePage} />
+                <div className="form-group mb-5 mt-5">
+                    <input type="text" placeholder="Rechercher..." value={search} onChange={handleSearch} className="form-control" />
+                </div>
+                {!loading ? (
+                    <>
+                        <div className="progress mt-3">
+                            <div className="progress-bar" role="progressbar" aria-label="Example with label" style={{ width: `${rate}%` }} aria-valuenow={rate} aria-valuemin="0" aria-valuemax="100">{rate}%</div>
+                        </div>
+                        <table className="table table-hover table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>English Word</th>
+                                    <th>French Word</th>
 
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {paginatedWords.map((word) =>
+                                    <>
+                                        <tr key={word.id} data-bs-toggle="modal" data-bs-target={"#word" + word.id}>
+                                            <td>{word.content}</td>
+                                            <td >{word.frWords.map((frWord) => frWord.content + ", ")}</td>
+                                        </tr>
+
+                                        <ModalEnWord id={"modal" + word.id} word={word} handleDelete={handleDelete} />
+                                    </>
+                                )}
+                            </tbody>
+                        </table>
+                    </>
+
+
+                ) : (
+                    <div className="text-center">
+                        <ThreeDots
+                            height="80"
+                            width="80"
+                            radius="9"
+                            color="#0d6efd"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{ marginLeft: '50%', transform: 'translateX(-10%)' }}
+                            wrapperClassName=""
+                            visible={true}
+                        />
+                    </div>
+
+                )}
+                <Pagination currentPage={currentPage} itemsPerPage={itemsPerPage} length={filteredEnWords.length} onPageChange={handleChangePage} />
+            </div>
         </>
     )
 }

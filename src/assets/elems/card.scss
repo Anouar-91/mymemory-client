@@ -1,10 +1,38 @@
-.card-primary{
+.card-primary {
     border: 1px solid #eff1f3 !important;
-cursor: pointer !important;
-box-shadow: 0 12px 32px 4px rgba(38,41,74,.16) !important;
-border-radius: 24px !important;
-padding-top:30px;
-padding-left:30px;
-padding-right:30px;
-padding-bottom:30px;
+    cursor: pointer !important;
+    box-shadow: 0 12px 32px 4px rgba(38, 41, 74, .16) !important;
+    border-radius: 24px !important;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+}
+
+.card-bg-primary {
+
+    background: #4C7F9B;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+    width: 90vw;
+    margin-top: 30px;
+
+    h1 {
+        color: white;
+        position: relative;
+
+        &::after {
+            transform: translateX(-50%);
+            left: 50%;
+            bottom: -30px;
+            position: absolute;
+            width: 290px;
+            content: "";
+            height: 2px;
+            background-color: white;
+        }
+    }
+    .label{
+        color:white;
+    }
 }

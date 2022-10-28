@@ -15,7 +15,7 @@
 }
 
 body {
-    background: #fafafa;
+    background:  #F3F3F3;
     font-size: 14px;
 }
 
@@ -115,4 +115,8 @@ a:focus {
 }
 .mr-3{
     margin-right: 30px;
+}
+
+.bg-primary{
+    background-color: $primary-color !important;
 }

@@ -30,7 +30,7 @@ function App() {
     }}>
       <BrowserRouter>
         <Navbar />
-        <div className="container">
+      
           <Routes>
             <Route element={<ProtectedRoute />}>
             <Route path="/en_words/new" element={<AddEnWordPage />} />
@@ -47,7 +47,7 @@ function App() {
             
             <Route path="/" element={<HomePage />} />
           </Routes>
-        </div>
+   
       </BrowserRouter>
       <ToastContainer position="top-center" />
 

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from '../contexts/AuthContext';
 import AuthAPI from '../services/AuthAPI';
 import { toast } from 'react-toastify';
-
+import logo from '../assets/img/logo.png'
 
 
 
@@ -23,7 +23,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <Link to={"/"} className="navbar-brand" >MyMemory</Link>
+        <Link to={"/"} className="navbar-brand" ><img src={logo} alt="" className="img-fluid logo-nav" /></Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

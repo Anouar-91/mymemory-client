@@ -9,7 +9,7 @@ import { ThreeDots } from 'react-loader-spinner'
 function LoginPage() {
     const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [loading, setLoading] =useState(false)
+    const [loading, setLoading] = useState(false)
 
     const [credentials, setCredentials] = useState({
         username: "",
@@ -48,36 +48,44 @@ function LoginPage() {
     }
     return (
         <>
-            <h1 className="h1 text-center">Connexion à l'application</h1>
+        <div className="container-fluid card-bg-primary">
+        <div className="p-5">
+        <h1 className="h1 text-center">Connexion à l'application</h1>
             <div className="row mt-5 justify-content-center">
                 <div className="col-md-8">
-                    <div className="card-primary">
-                    {!loading  ?(
-                        <form onSubmit={handleSubmit} >
-                            <Field name="username" label="Adresse email" value={credentials.username} onChange={handleChange} placeholder="Email de connexion" type="email" error={error} />
-  
-                            <Field name="password" label="Mot de passe" value={credentials.password} onChange={handleChange} placeholder="Mot de passe" type="password" error="" />
+              
+                        {!loading ? (
+                            <form onSubmit={handleSubmit} >
+                                <Field name="username" label="Email" value={credentials.username} onChange={handleChange} placeholder="Email de connexion" type="email" error={error} />
+                                <div className="mt-3">
 
+              
+                                <Field name="password" label="Password" value={credentials.password} onChange={handleChange} placeholder="Mot de passe" type="password" error="" />
+                                </div>
 
-                            <div className="form-group mt-3 text-center">
-                                <button className="btn btn-primary">Connexion</button>
-                            </div>
-                        </form>
-                        ):(
-        <ThreeDots 
-        height="80" 
-        width="80" 
-        radius="9"
-        color="#0d6efd" 
-        ariaLabel="three-dots-loading"
-        wrapperStyle={{marginLeft:'50%', transform: 'translateX(-10%)'}}
-        wrapperClassName=""
-        visible={true}
-         />
-      )}
-                    </div>
+                                <div className="form-group mt-3 text-center">
+                                    <button className="btn btn-secondary">Connexion</button>
+                                </div>
+                            </form>
+                        ) : (
+                            <ThreeDots
+                                height="80"
+                                width="80"
+                                radius="9"
+                                color="#0d6efd"
+                                ariaLabel="three-dots-loading"
+                                wrapperStyle={{ marginLeft: '50%', transform: 'translateX(-10%)' }}
+                                wrapperClassName=""
+                                visible={true}
+                            />
+                        )}
+        
                 </div>
             </div>
+        </div>
+        </div>
+
+
         </>
     )
 }

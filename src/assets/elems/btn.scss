@@ -1,28 +1,29 @@
 .btn-primary{
-    border: 1px solid $default-color;
+    border: 1px solid $secondary-color;
     color:white !important;
-    background-color:$default-color!important;
+    background-color:$secondary-color!important;
+    border-radius: 48px;
+    padding-right: 30px;
+    padding-left: 30px;
     &:hover{
         background-color:transparent !important;
-        color: $default-color !important;
-        border: 1px solid $default-color;
+        color: $secondary-color !important;
+        border: 1px solid $secondary-color;
     }
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
-    color: $default-color !important;
-    border: 1px solid $default-color;
+    color: $secondary-color !important;
+    border: 1px solid $secondary-color;
     background-color:transparent !important;
 }
 
 
 .btn-secondary{
-    border: 1px solid $second-color;
-    color: $second-color !important;
-    background-color:transparent !important;
-    &:hover{
-        color:white !important;
-        border: 1px solid $second-color;
-        background-color:$second-color!important;
+    color:white !important;
+    border: 1px solid $third-color;
+    background-color:$third-color !important;
+    border-radius: 48px;
+    padding-right: 30px;
+    padding-left: 30px;
 
-    }
 }
