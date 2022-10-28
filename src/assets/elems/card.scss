@@ -46,3 +46,18 @@
         color: $third-color !important;
     }
 }
+
+.card-shadow{
+    padding-top:30px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom:20px;
+    background-color:white;
+    border-radius: 20px;
+    box-shadow: 0 12px 32px 4px rgba(38, 41, 74, .16) !important;
+    height:100%;
+    h2{
+        text-align: center;
+    }
+
+}
