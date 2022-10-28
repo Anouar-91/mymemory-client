@@ -84,38 +84,37 @@ export default function EnWordPage() {
                         <img src={enwordIllustration} className="img-fluid" alt="" />
                     </div>
                 </div>
-
-
-
                 {!loading ? (
                     <>
                         <div className="progress mt-3">
                             <div className="progress-bar" role="progressbar" aria-label="Example with label" style={{ width: `${rate}%` }} aria-valuenow={rate} aria-valuemin="0" aria-valuemax="100">{rate}%</div>
                         </div>
-                        <table className="table table-hover table-responsive">
-                            <thead>
-                                <tr>
-                                    <th>English Word</th>
-                                    <th>French Word</th>
-
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                {paginatedWords.map((word) =>
-                                    <>
-                                        <tr key={word.id} data-bs-toggle="modal" data-bs-target={"#word" + word.id}>
-                                            <td>{word.content}</td>
-                                            <td >{word.frWords.map((frWord) => frWord.content + ", ")}</td>
-                                        </tr>
-
-                                        <ModalEnWord id={"modal" + word.id} word={word} handleDelete={handleDelete} />
-                                    </>
-                                )}
-                            </tbody>
-                        </table>
+            
+                        <div className="table-book">
+                            <div className="d-flex">
+                                <div className="col-6">
+                                    <div className="head">English word</div>
+                                </div>
+                                <div className="col-6">
+                                    <div className="head">French word</div>
+                                </div>
+                            </div>
+         
+                            {paginatedWords.map((word) =>
+                                <>
+                                    <div key={word.id} data-bs-toggle="modal" data-bs-target={"#word" + word.id} className="d-flex lineWord">
+                                        <div className="col-6">
+                                            <div className="word">{word.content}</div>
+                                        </div>
+                                        <div className="col-6">
+                                            <div className="word">{word.frWords.map((frWord) => frWord.content + ", ")}</div>
+                                        </div>
+                                    </div>
+                                    <ModalEnWord id={"modal" + word.id} word={word} handleDelete={handleDelete} />
+                                </>
+                            )}
+                        </div>
                     </>
-
 
                 ) : (
                     <div className="text-center">
