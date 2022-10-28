@@ -9,7 +9,7 @@ function HomePage() {
             <div className="container py-5">
                 <div className="row align-items-center">
                     <div className="col-md-7">
-                        <img src={mymemory} alt="" />
+                        <img src={mymemory} alt="" className="img-fluid" />
                         <p className="col-md-8 fs-4 text-light">MyMemory is an web application developed to work on memory and English. </p>
                         <Link to="/login" className="btn btn-primary btn-lg" >Sign In</Link>&nbsp;&nbsp;
                         <Link to="/register" className="btn btn-secondary btn-lg" >Sign up</Link>
