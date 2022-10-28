@@ -103,7 +103,7 @@ export default function EnWordPage() {
                             {paginatedWords.map((word) =>
                                 <>
                                     <div key={word.id} data-bs-toggle="modal" data-bs-target={"#word" + word.id} className="d-flex lineWord">
-                                        <div className="col-6">
+                                        <div className="col-6 right-line">
                                             <div className="word">{word.content}</div>
                                         </div>
                                         <div className="col-6">
