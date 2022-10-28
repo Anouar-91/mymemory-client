@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Field from "../components/forms/field";
 import WordAPI from "../services/WordAPI";
 import { toast } from 'react-toastify';
-
+import addWordIllustration from '../assets/img/addWord-illustration.png'
 
 function AddEnWordPage(props) {
     const navigate = useNavigate();
@@ -40,33 +40,44 @@ function AddEnWordPage(props) {
 
     return (
         <>
-            <div className="text-center">
-                <h1 className="mb-5 h1">Add a new word</h1>
-            </div>
-            <div className="card-primary">
+            <div className="container">
+                <div className="title-primary mt-3 mb-4">
+                    Add a new word
+                </div>
+                <div className="row justify-content-center align-items-center">
+                    <div className="col-md-6 mt-3">
+                
 
-                <form onSubmit={handleSubmit}>
-                    <Field required value={words.enWord}
-                        onChange={handleChange}
-                        name="enWord"
-                        label="English word"
-                        placeholder="English word">
-                    </Field>
-                    <div className="mt-3">
-                        <Field required value={words.frWord}
-                            onChange={handleChange}
-                            name="frWord"
-                            label="French word"
-                            placeholder="French word">
-                        </Field>
+                            <form onSubmit={handleSubmit}>
+                                <Field required value={words.enWord}
+                                     className="input-shadow"
+                                    onChange={handleChange}
+                                    name="enWord"
+                         
+                                    placeholder="English word">
+                                </Field>
+                                <div className="mt-3">
+                                    <Field required value={words.frWord}
+                                        className="input-shadow"
+                                        onChange={handleChange}
+                                        name="frWord"
+                          
+                                        placeholder="French word">
+                                    </Field>
+                                </div>
+
+                                <div className="mt-3 text-center">
+                                    <button className="btn btn-primary">Save</button>
+                                </div>
+                            </form>
+                   
                     </div>
-
-                    <div className="mt-3 text-center">
-                        <button className="btn btn-primary">Save</button>
+                    <div className="col-md-6 text-center mt-3">
+                        <img src={addWordIllustration} className="img-fluid w-75" alt="illustration" />
                     </div>
-                </form>
-            </div>
+                </div>
 
+            </div>
 
         </>
     )

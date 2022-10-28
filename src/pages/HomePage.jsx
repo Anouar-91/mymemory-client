@@ -15,8 +15,6 @@ function HomePage() {
                             <div className="col-md-3 mr-5 mr-md-0"><Link to="/login" className="btn btn-primary btn-lg" >Sign In</Link></div>
                             <div className="col-md-3"><Link to="/register" className="btn btn-secondary btn-lg" >Sign up</Link></div>
                         </div>
-                        
-                        
                     </div>
                     <div className="col-md-5">
                         <img src={homeIllustration} alt="" className="img-fluid" />

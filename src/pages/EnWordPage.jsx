@@ -77,7 +77,7 @@ export default function EnWordPage() {
                             <Link to="/en_words/new" className="btn btn-primary">New word</Link>
                         </div>
                         <div className="form-group mb-5 mt-5">
-                            <input type="text" placeholder="Search..." value={search} onChange={handleSearch} className="form-control" />
+                            <input type="text" placeholder="Search..." value={search} onChange={handleSearch} className="form-control input-shadow" />
                         </div>
                     </div>
                     <div className="col-md-4">
