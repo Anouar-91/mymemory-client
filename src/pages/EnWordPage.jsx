@@ -14,6 +14,7 @@ export default function EnWordPage() {
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true)
     const [rate, setRate] = useState(0)
+    const [wordModal, setWordModal] = useState({content: "", frWords: [], id: 1, nbError:0, nbSuccess: 0});
 
     const fetchEnWords = async () => {
         try {
@@ -29,6 +30,9 @@ export default function EnWordPage() {
         }
     }
 
+    const handleClickModal = (word) => {
+        setWordModal(word)
+    }
     const handleDelete = async (id) => {
         const myModal = document.querySelector('.btn-close');
         myModal.click()
@@ -102,7 +106,7 @@ export default function EnWordPage() {
          
                             {paginatedWords.map((word) =>
                                 <>
-                                    <div key={word.id} data-bs-toggle="modal" data-bs-target={"#word" + word.id} className="d-flex lineWord">
+                                    <div key={word.id} data-bs-toggle="modal" onClick={() => handleClickModal(word)} data-bs-target={"#wordModal"} className="d-flex lineWord">
                                         <div className="col-6 right-line">
                                             <div className="word">{word.content}</div>
                                         </div>
@@ -110,9 +114,13 @@ export default function EnWordPage() {
                                             <div className="word">{word.frWords.map((frWord) => frWord.content + ", ")}</div>
                                         </div>
                                     </div>
-                                    <ModalEnWord id={"modal" + word.id} word={word} handleDelete={handleDelete} />
                                 </>
                             )}
+                            
+                             { <ModalEnWord  word={wordModal} handleDelete={handleDelete} /> } 
+
+                            
+
                         </div>
                     </>
 

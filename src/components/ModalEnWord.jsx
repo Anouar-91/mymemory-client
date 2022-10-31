@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function ModalEnWord({ word, handleDelete }) {
     const navigate = useNavigate();
@@ -14,8 +14,9 @@ function ModalEnWord({ word, handleDelete }) {
         myModal.click()
         navigate("/add_translation/" + word.id)
     }
+
     return (
-        <div className="modal fade" id={"word" + word.id} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={"wordModal" } tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
