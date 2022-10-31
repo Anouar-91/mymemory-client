@@ -15,3 +15,13 @@
         box-shadow: 0 0 0 0.25rem rgba(200, 8, 8, 0.25);
     }
 }
+.input-shadow-secondary{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 39px;
+
+    &:focus {
+        border-color: $third-color !important;
+        box-shadow: 0 0 0 0.25rem rgba(200, 8, 8, 0.25);
+    }
+}
+
