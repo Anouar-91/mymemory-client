@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import WordAPI from '../services/WordAPI';
-import {  useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner'
 import Field from "../components/forms/field";
 import { toast } from 'react-toastify';
@@ -33,7 +33,7 @@ function UpdateWordsPage() {
 
     }
 
-    useEffect(() => {  
+    useEffect(() => {
         fetchEnWord(id)
         if (frWords) {
             console.log(frWords.length)
@@ -44,7 +44,7 @@ function UpdateWordsPage() {
     const handleChange = (e) => {
         const { value } = e.currentTarget;
         setEnWord({
-            ...enWord ,
+            ...enWord,
             content: value
         })
     }
@@ -55,7 +55,7 @@ function UpdateWordsPage() {
         setFrWords({ ...frWords, [name]: newObj })
     }
 
-    const updateEnWord =async () => {
+    const updateEnWord = async () => {
         setLoading(true)
 
         try {
@@ -73,7 +73,7 @@ function UpdateWordsPage() {
         setLoading(true)
 
         try {
-        
+
             await WordAPI.updateFrWord(id, word);
             toast.success("Registered successfully");
             setLoading(false)
@@ -85,7 +85,7 @@ function UpdateWordsPage() {
         }
     }
 
-    const deleteFrWord = async(idFr, idEn) => {
+    const deleteFrWord = async (idFr, idEn) => {
         setLoading(true)
         try {
             console.log(idFr, idEn)
@@ -106,32 +106,37 @@ function UpdateWordsPage() {
 
     return (
         <>
-            {loading ? (
-                <div className="text-center">
-                    <ThreeDots
-                        height="80"
-                        width="80"
-                        radius="9"
-                        color="#0d6efd"
-                        ariaLabel="three-dots-loading"
-                        wrapperStyle={{ marginLeft: '50%', transform: 'translateX(-10%)' }}
-                        wrapperClassName=""
-                        visible={true}
-                    />
-                </div>
+            <div className="container">
 
-            ) : (
-                <div>
+
+                {loading ? (
                     <div className="text-center">
-                        <h1>Update</h1>
+                        <ThreeDots
+                            height="80"
+                            width="80"
+                            radius="9"
+                            color="#0d6efd"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{ marginLeft: '50%', transform: 'translateX(-10%)' }}
+                            wrapperClassName=""
+                            visible={true}
+                        />
                     </div>
-                    <div className="mt-4 card-primary">
-                            <div className="row align-items-center">
+
+                ) : (
+                    <div>
+                        <div className="title-primary mt-3 mb-4">
+                            Update
+                        </div>
+                        <div className="mt-4">
+                            <div className="row align-items-end">
                                 <div className="col-10">
+                                <label className="mt-4 h4" htmlFor="">English word</label>
+
                                     <Field required value={enWord.content}
                                         onChange={handleChange}
+                                        className="input-shadow-secondary"
                                         name="enWord"
-                                        label="English word"
                                         placeholder="English word">
                                     </Field>
                                 </div>
@@ -145,26 +150,34 @@ function UpdateWordsPage() {
                                 return (
                                     <div key={index} className="row">
                                         <div className="col-10">
-                                            <Field  required value={frWords[word.id].content}
+                                            <Field required value={frWords[word.id].content}
                                                 onChange={handleChangeFrWord}
                                                 name={word.id}
+                                                className="input-shadow-secondary"
+
                                                 placeholder="French word">
                                             </Field>
                                         </div>
                                         <div className="col-2">
-                                            <button onClick={() => updateFrWord(word.id, frWords[word.id].content)} className="btn btn-warning mt-3"><i className="fa-solid fa-pen-to-square"></i></button>&nbsp;&nbsp;
-                                            {copyEnWord.frWords.length > 1 && <button onClick={() => deleteFrWord(word.id, enWord.id)} className="btn btn-danger mt-3"><i className="fa-solid fa-trash-can"></i></button>}
-                                            
+                                            <div className="d-flex">
+                            
+                                                    <button onClick={() => updateFrWord(word.id, frWords[word.id].content)} className="btn btn-warning mt-3"><i className="fa-solid fa-pen-to-square"></i></button>&nbsp; &nbsp; 
+                                   
+                                                                                         {copyEnWord.frWords.length > 1 && <button onClick={() => deleteFrWord(word.id, enWord.id)} className="btn btn-danger mt-3"><i className="fa-solid fa-trash-can"></i></button>}
+</div>
+                                     
+
 
                                         </div>
-                
+
                                     </div>
                                 )
                             })}
+                        </div>
                     </div>
-                </div>
-            )
-            }
+                )
+                }
+            </div>
         </>
     )
 }
