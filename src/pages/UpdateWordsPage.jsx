@@ -153,7 +153,8 @@ function UpdateWordsPage() {
                                         </div>
                                         <div className="col-2">
                                             <button onClick={() => updateFrWord(word.id, frWords[word.id].content)} className="btn btn-warning mt-3"><i className="fa-solid fa-pen-to-square"></i></button>&nbsp;&nbsp;
-                                            <button onClick={() => deleteFrWord(word.id, enWord.id)} className="btn btn-danger mt-3"><i className="fa-solid fa-trash-can"></i></button>
+                                            {copyEnWord.frWords.length > 1 && <button onClick={() => deleteFrWord(word.id, enWord.id)} className="btn btn-danger mt-3"><i className="fa-solid fa-trash-can"></i></button>}
+                                            
 
                                         </div>
                 
