@@ -1,9 +1,20 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import mymemory from '../assets/img/mymemory.png';
 import homeIllustration from '../assets/img/home-illustration.png';
+import AuthAPI from '../services/AuthAPI';
+import { useNavigate } from "react-router-dom";
+
+
 
 function HomePage() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(AuthAPI.isAuthenticated()){
+            navigate("/en_words");
+        }
+    }, [])
     return (
         <div className="p-5 bg-primary home-bg">
             <div className="container py-5">
