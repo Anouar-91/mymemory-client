@@ -6,7 +6,7 @@ import frWordQuestion from '../assets/img/frWordQuestion.png'
 function ChoiceTypeQuizPage() {
     return (
         <>
-            <div className="container">
+            <div className="container mb-5">
                 <div className="title-primary mt-3 mb-4">
                     Quiz Word : Choose a mode
                 </div>

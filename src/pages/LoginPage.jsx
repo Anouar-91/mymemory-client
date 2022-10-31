@@ -84,10 +84,11 @@ function LoginPage() {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="text-center d-md-block d-none" style={{position: 'absolute', bottom:"125px", left:"50%", transform: 'translateX(-50%)'}}>
+                <div className="text-center d-md-block d-none" style={{position: 'absolute', bottom:"-66%", left:"50%", transform: 'translateX(-50%)'}}>
                 <img src={loginIllustration} alt="" />
             </div>
+            </div>
+
 
 
         </>

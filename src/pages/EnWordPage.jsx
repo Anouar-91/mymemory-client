@@ -139,7 +139,7 @@ export default function EnWordPage() {
                     </div>
 
                 )}
-                <div style={{width: 'fit-content', overflowX: "scroll"}}>
+                <div style={{width: 'fit-content'}}>
                 <Pagination currentPage={currentPage} itemsPerPage={itemsPerPage} length={filteredEnWords.length} onPageChange={handleChangePage} />
 
                 </div>

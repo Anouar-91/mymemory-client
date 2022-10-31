@@ -69,7 +69,7 @@ function RegisterPage() {
                     <div className="col-md-8">
                     <form onSubmit={handleSubmit}>
                             <div className="row mb-3">
-                                <div className="col-6">
+                                <div className="col-md-6">
                                     <Field
                                         required
                                         name="firstname"
@@ -81,7 +81,7 @@ function RegisterPage() {
                                     ></Field>
 
                                 </div>
-                                <div className="col-6">
+                                <div className="col-md-6">
                                     <Field
                                         required
                                         name="lastname"
@@ -139,10 +139,11 @@ function RegisterPage() {
               
 
                 </div>
-            </div>
-            <div className="text-center d-md-block d-none" style={{position: 'absolute', bottom:"90px", left:"16%", transform: 'translateX(-50%)'}}>
+                <div className="text-center d-md-block d-none" style={{position: 'absolute', bottom:"0%", left:"12%", transform: 'translateX(-50%)'}}>
                 <img src={registerIllustration} alt="" />
             </div>
+            </div>
+
 
 
 
