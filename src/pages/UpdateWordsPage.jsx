@@ -112,14 +112,8 @@ function UpdateWordsPage() {
                 {loading ? (
                     <div className="text-center">
                         <ThreeDots
-                            height="80"
-                            width="80"
-                            radius="9"
-                            color="#0d6efd"
-                            ariaLabel="three-dots-loading"
-                            wrapperStyle={{ marginLeft: '50%', transform: 'translateX(-10%)' }}
-                            wrapperClassName=""
-                            visible={true}
+                            color="#C30028"
+                            wrapperStyle={{ justifyContent: 'center' }}
                         />
                     </div>
 
@@ -131,7 +125,7 @@ function UpdateWordsPage() {
                         <div className="mt-4">
                             <div className="row align-items-end">
                                 <div className="col-10">
-                                <label className="mt-4 h4" htmlFor="">English word</label>
+                                    <label className="mt-4 h4" htmlFor="">English word</label>
 
                                     <Field required value={enWord.content}
                                         onChange={handleChange}
@@ -160,12 +154,12 @@ function UpdateWordsPage() {
                                         </div>
                                         <div className="col-2">
                                             <div className="d-flex">
-                            
-                                                    <button onClick={() => updateFrWord(word.id, frWords[word.id].content)} className="btn btn-warning mt-3"><i className="fa-solid fa-pen-to-square"></i></button>&nbsp; &nbsp; 
-                                   
-                                                                                         {copyEnWord.frWords.length > 1 && <button onClick={() => deleteFrWord(word.id, enWord.id)} className="btn btn-danger mt-3"><i className="fa-solid fa-trash-can"></i></button>}
-</div>
-                                     
+
+                                                <button onClick={() => updateFrWord(word.id, frWords[word.id].content)} className="btn btn-warning mt-3"><i className="fa-solid fa-pen-to-square"></i></button>&nbsp; &nbsp;
+
+                                                {copyEnWord.frWords.length > 1 && <button onClick={() => deleteFrWord(word.id, enWord.id)} className="btn btn-danger mt-3"><i className="fa-solid fa-trash-can"></i></button>}
+                                            </div>
+
 
 
                                         </div>

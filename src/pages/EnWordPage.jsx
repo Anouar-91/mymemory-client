@@ -14,7 +14,7 @@ export default function EnWordPage() {
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true)
     const [rate, setRate] = useState(0)
-    const [wordModal, setWordModal] = useState({content: "", frWords: [], id: 1, nbError:0, nbSuccess: 0});
+    const [wordModal, setWordModal] = useState({ content: "", frWords: [], id: 1, nbError: 0, nbSuccess: 0 });
 
     const fetchEnWords = async () => {
         try {
@@ -93,7 +93,7 @@ export default function EnWordPage() {
                         <div className="progress mt-3">
                             <div className="progress-bar" role="progressbar" aria-label="Example with label" style={{ width: `${rate}%` }} aria-valuenow={rate} aria-valuemin="0" aria-valuemax="100">{rate}%</div>
                         </div>
-            
+
                         <div className="table-book">
                             <div className="d-flex">
                                 <div className="col-6">
@@ -103,7 +103,7 @@ export default function EnWordPage() {
                                     <div className="head">French word</div>
                                 </div>
                             </div>
-         
+
                             {paginatedWords.map((word) =>
                                 <>
                                     <div key={word.id} data-bs-toggle="modal" onClick={() => handleClickModal(word)} data-bs-target={"#wordModal"} className="d-flex lineWord">
@@ -116,10 +116,10 @@ export default function EnWordPage() {
                                     </div>
                                 </>
                             )}
-                            
-                             { <ModalEnWord  word={wordModal} handleDelete={handleDelete} /> } 
 
-                            
+                            {<ModalEnWord word={wordModal} handleDelete={handleDelete} />}
+
+
 
                         </div>
                     </>
@@ -127,20 +127,14 @@ export default function EnWordPage() {
                 ) : (
                     <div className="text-center">
                         <ThreeDots
-                            height="80"
-                            width="80"
-                            radius="9"
-                            color="#0d6efd"
-                            ariaLabel="three-dots-loading"
-                            wrapperStyle={{ marginLeft: '50%', transform: 'translateX(-10%)' }}
-                            wrapperClassName=""
-                            visible={true}
+                            color="#C30028"
+                            wrapperStyle={{ justifyContent: 'center' }}
                         />
                     </div>
 
                 )}
-                <div style={{width: 'fit-content'}}>
-                <Pagination currentPage={currentPage} itemsPerPage={itemsPerPage} length={filteredEnWords.length} onPageChange={handleChangePage} />
+                <div style={{ width: 'fit-content' }}>
+                    <Pagination currentPage={currentPage} itemsPerPage={itemsPerPage} length={filteredEnWords.length} onPageChange={handleChangePage} />
 
                 </div>
             </div>

@@ -101,14 +101,8 @@ function QuizFrWordPage() {
                 <div className={formHide ? "d-none" : "mt-5 mb-5"}>
                     {loading ? (
                         <ThreeDots
-                            height="80"
-                            width="80"
-                            radius="9"
-                            color="#0d6efd"
-                            ariaLabel="three-dots-loading"
-                            wrapperStyle={{ marginLeft: '50%', transform: 'translateX(-10%)' }}
-                            wrapperClassName=""
-                            visible={true}
+                            color="#C30028"
+                            wrapperStyle={{ justifyContent: 'center' }}
                         />
                     ) : (
                         <>

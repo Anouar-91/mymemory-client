@@ -68,25 +68,19 @@ function LoginPage() {
                                         <button className="btn btn-secondary">Connexion</button>
                                     </div>
                                 </form>
-                                
+
                             ) : (
                                 <ThreeDots
-                                    height="80"
-                                    width="80"
-                                    radius="9"
-                                    color="#0d6efd"
-                                    ariaLabel="three-dots-loading"
-                                    wrapperStyle={{ marginLeft: '50%', transform: 'translateX(-10%)' }}
-                                    wrapperClassName=""
-                                    visible={true}
+                                    color="#C30028"
+                                    wrapperStyle={{ justifyContent: 'center' }}
                                 />
                             )}
                         </div>
                     </div>
                 </div>
-                <div className="text-center d-md-block d-none" style={{position: 'absolute', bottom:"-66%", left:"50%", transform: 'translateX(-50%)'}}>
-                <img src={loginIllustration} alt="" />
-            </div>
+                <div className="text-center d-md-block d-none" style={{ position: 'absolute', bottom: "-66%", left: "50%", transform: 'translateX(-50%)' }}>
+                    <img src={loginIllustration} alt="" />
+                </div>
             </div>
 
 
