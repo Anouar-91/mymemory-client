@@ -4,6 +4,8 @@ import { ThreeDots } from 'react-loader-spinner';
 import InputQuestionWord from "../components/forms/InputQuestionWord";
 import WordAPI from '../services/WordAPI';
 import illustration from '../assets/img/enWordQuiz-illustration.png'
+import successIllustration from '../assets/img/success-illustration.png'
+import failureIllustration from '../assets/img/failure-illustration.png'
 
 
 function QuizEnWordPage() {
@@ -144,11 +146,13 @@ function QuizEnWordPage() {
                                             </p>
                                         )
                                     })}
+                                                                        <img  src={failureIllustration} alt="illustration" className="img-fluid" />
+
                                 </div>
 
                             </div>
                             <div className="col-md-5 mt-3 text-center">
-                                <div className="card-primary">
+                                <div className="card-primary position-relative">
                                     <h3 className="text-success">List of success</h3>
                                     {success.map((word, index) => {
                                         return (
@@ -156,6 +160,7 @@ function QuizEnWordPage() {
                                         )
 
                                     })}
+                                    <img  src={successIllustration} alt="illustration" className="img-fluid" />
 
                                 </div>
 

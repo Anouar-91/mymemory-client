@@ -4,7 +4,8 @@ import { ThreeDots } from 'react-loader-spinner';
 import InputQuestionWord from "../components/forms/InputQuestionWord";
 import WordAPI from '../services/WordAPI';
 import illustration from '../assets/img/frWordQuiz-illustration.png';
-
+import successIllustration from '../assets/img/success-illustration.png'
+import failureIllustration from '../assets/img/failure-illustration.png'
 
 
 function QuizFrWordPage() {
@@ -163,6 +164,8 @@ function QuizFrWordPage() {
                                             </p>
                                         )
                                     })}
+                                                                                                            <img  src={failureIllustration} alt="illustration" className="img-fluid" />
+
                                 </div>
 
                             </div>
@@ -175,7 +178,7 @@ function QuizFrWordPage() {
                                         )
 
                                     })}
-
+                                    <img src={successIllustration} alt="illustration" className="img-fluid" />
                                 </div>
 
                             </div>
