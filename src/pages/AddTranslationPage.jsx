@@ -35,7 +35,8 @@ function AddTranslationPage(props) {
         setLoading(true)
 
         try {
-            await WordAPI.addFrTranslation(frWord, id)
+            const wordTrim = frWord.replace('’', "'").trim()
+            await WordAPI.addFrTranslation(wordTrim, id)
             toast.success("Registered successfully")
             setFrWord("")
             navigate("/en_words");
