@@ -51,9 +51,11 @@ function UpdateWordsPage() {
 
     const updateEnWord = async () => {
         setLoading(true)
-
         try {
-            await WordAPI.update(enWord);
+            const wordTrim = enWord.trim()
+
+            console.log(wordTrim)
+            await WordAPI.update(wordTrim);
             toast.success("Registered successfully");
             setLoading(false)
         } catch (error) {
@@ -65,8 +67,8 @@ function UpdateWordsPage() {
         setLoading(true)
 
         try {
-
-            await WordAPI.updateFrWord(id, word);
+            const wordTrim = word.trim()
+            await WordAPI.updateFrWord(id, wordTrim);
             toast.success("Registered successfully");
             setLoading(false)
 
