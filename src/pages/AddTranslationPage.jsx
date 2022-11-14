@@ -43,7 +43,7 @@ function AddTranslationPage(props) {
 
 
         } catch (error) {
-            console.log(error)
+        
             toast.error("Error")
             setLoading(false)
 

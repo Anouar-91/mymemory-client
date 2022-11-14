@@ -26,19 +26,13 @@ function UpdateWordsPage() {
             })
             setFrWords(table);
             setLoading(false);
-            console.log(frWords)
         } catch (error) {
-            console.log("error")
         }
 
     }
 
     useEffect(() => {
         fetchEnWord(id)
-        if (frWords) {
-            console.log(frWords.length)
-
-        }
 
     }, [])
     const handleChange = (e) => {

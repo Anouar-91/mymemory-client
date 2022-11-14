@@ -20,13 +20,11 @@ export default function EnWordPage() {
         try {
             const data = await WordAPI.findAll();
             const result = await WordAPI.getRate()
-            console.log(result)
             setRate(result);
             setEnWords(data)
             setLoading(false)
         } catch (error) {
             toast.error("An error occurred while loading clients")
-            console.log(error.response)
         }
     }
 

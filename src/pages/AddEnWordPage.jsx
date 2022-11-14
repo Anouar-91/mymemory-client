@@ -33,7 +33,7 @@ function AddEnWordPage(props) {
             navigate("/en_words");
 
         } catch (error) {
-            console.log(error)
+       
             toast.error("Error")
         }
     }

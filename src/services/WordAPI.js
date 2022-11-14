@@ -108,7 +108,6 @@ function update(word){
 }
 
 function updateFrWord(id, word){
-    console.log(word, "je suis EnWordAPI")
     return axios.put(API_URL + "fr_words/" +id, {content:word}).then(async response => {
         const cachedEnWords = await Cache.get('enWords');
         if(cachedEnWords){
@@ -123,7 +122,6 @@ function updateFrWord(id, word){
 
 function incrementError(arrayIdError){
     return axios.post(API_URL + "en_words_increment/error", {enWords:arrayIdError}).then(async response => {
-        console.log(response, 'reusssi')
         const cachedEnWords = await Cache.get('enWords');
         if(cachedEnWords){
             arrayIdError.forEach((id) => {
@@ -141,10 +139,8 @@ function incrementError(arrayIdError){
 }
 
 function incrementSuccess(arrayIdSucces){
-    console.log(arrayIdSucces, "tab id")
     return axios.post(API_URL + "en_words_increment/success", {enWords:arrayIdSucces})
     .then(async response => {
-        console.log(response, 'reusssi')
         const cachedEnWords = await Cache.get('enWords');
         if(cachedEnWords){
             arrayIdSucces.forEach((id) => {
