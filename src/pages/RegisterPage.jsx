@@ -52,7 +52,6 @@ function RegisterPage() {
             navigate('/login');
         } catch (error) {
             toast.error('Une erreur est survenue')
-            console.log(error)
             error.response.data.violations.forEach((violation) => {
                 apiErrors[violation.propertyPath] = violation.message;
             })

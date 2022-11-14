@@ -68,7 +68,6 @@ function QuizFrWordPage() {
             await WordAPI.incrementError(errorIdArray);
             await WordAPI.incrementSuccess(successIdArray);
         } catch (error) {
-            console.log(error)
         }
 
         setErrors(errorArray);

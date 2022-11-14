@@ -41,7 +41,6 @@ export default function EnWordPage() {
         } catch (error) {
             toast.error("An error has occurred")
             setEnWords(copyWords);
-            console.log(error.response)
         }
     };
 

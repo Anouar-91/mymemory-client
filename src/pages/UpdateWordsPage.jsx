@@ -53,12 +53,10 @@ function UpdateWordsPage() {
         setLoading(true)
 
         try {
-            console.log(enWord, "handleChangeEnWord")
             await WordAPI.update(enWord);
             toast.success("Registered successfully");
             setLoading(false)
         } catch (error) {
-            console.log(error)
             setLoading(false)
         }
     }
@@ -73,7 +71,6 @@ function UpdateWordsPage() {
             setLoading(false)
 
         } catch (error) {
-            console.log(error)
             setLoading(false)
 
         }
@@ -82,16 +79,13 @@ function UpdateWordsPage() {
     const deleteFrWord = async (idFr, idEn) => {
         setLoading(true)
         try {
-            console.log(idFr, idEn)
             await WordAPI.deleteFrWord(idFr, idEn);
-            console.log(idFr, idEn)
             toast.success("Deleted successfully");
             navigate('/en_words')
             setLoading(false)
 
 
         } catch (error) {
-            console.log(error)
             setLoading(false)
 
 

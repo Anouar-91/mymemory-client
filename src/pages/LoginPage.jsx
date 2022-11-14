@@ -40,7 +40,6 @@ function LoginPage() {
             navigate("/en_words");
             setLoading(false)
         } catch (error) {
-            console.log(error.response.data)
             toast.error('Une erreur est survenue')
             setError("Aucun compte ne correspond à ces identifiants !")
             setLoading(false)
