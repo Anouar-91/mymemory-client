@@ -41,3 +41,26 @@
     }
 
 }
+
+.tab-modal{
+    .head {
+        font-family: "Comfortaa";
+        font-weight: 700;
+        font-size: 24px;
+        text-align: center;
+        padding: 8px;
+    }
+        .word{
+            text-align: center;
+            padding: 7px;
+            cursor: pointer;
+        } 
+        .lineWord{
+            border-bottom: 1px solid #B9B9B9;
+    
+            &:hover{
+                background-color: #dc6b6bc8;
+            }
+        }
+
+}

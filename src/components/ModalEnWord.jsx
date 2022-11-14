@@ -16,7 +16,7 @@ function ModalEnWord({ word, handleDelete }) {
     }
 
     return (
-        <div className="modal fade" id={"wordModal" } tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={"wordModal" } tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
