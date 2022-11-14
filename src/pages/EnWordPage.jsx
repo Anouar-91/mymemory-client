@@ -96,7 +96,7 @@ export default function EnWordPage() {
                             <input type="text" placeholder="Search..." value={search} onChange={handleSearch} className="form-control input-shadow" />
                         </div>
                         {!loading &&
-                            <button onClick={() => openMistakeWord()} type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mostErrorList">
+                            <button onClick={() => openMistakeWord()} type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#mostErrorList">
                                 See the words you make the most mistakes on
                             </button>
                         }

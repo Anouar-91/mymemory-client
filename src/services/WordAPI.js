@@ -96,7 +96,7 @@ function addFrTranslation(word, id){
 }
 
 function update(word){
-    return axios.put(API_URL + "en_words/" + word.id, {content:word.content}).then(async response => {
+    return axios.put(API_URL + "en_words/" + word.id, {content:word.content.trim()}).then(async response => {
         const cachedEnWords = await Cache.get('enWords');
         if(cachedEnWords){
             const index = cachedEnWords.findIndex(w => w.id === +word.id);

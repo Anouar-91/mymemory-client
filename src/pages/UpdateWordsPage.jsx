@@ -52,13 +52,11 @@ function UpdateWordsPage() {
     const updateEnWord = async () => {
         setLoading(true)
         try {
-            const wordTrim = enWord.trim()
-
-            console.log(wordTrim)
-            await WordAPI.update(wordTrim);
+            await WordAPI.update(enWord);
             toast.success("Registered successfully");
             setLoading(false)
         } catch (error) {
+            console.log(error)
             setLoading(false)
         }
     }
@@ -125,7 +123,7 @@ function UpdateWordsPage() {
                                     </Field>
                                 </div>
                                 <div className="col-2">
-                                    <button onClick={() => updateEnWord()} className="btn btn-warning mt-3"><i className="fa-solid fa-pen-to-square"></i></button>
+                                    <button onClick={() => {  updateEnWord()}} className="btn btn-warning mt-3"><i className="fa-solid fa-pen-to-square"></i></button>
                                 </div>
                             </div>
 
