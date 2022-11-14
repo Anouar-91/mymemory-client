@@ -32,9 +32,8 @@ function App() {
         <Navbar />
       
           <Routes>
+
             <Route element={<ProtectedRoute />}>
-            <Route path="/en_words/new" element={<AddEnWordPage />} />
-              <Route path="/en_words" element={<EnWordPage />} />
               <Route path="/add_translation/:id" element={<AddTranslationPage />} />
               <Route path="/update_words/:id" element={<UpdateWordsPage />} />
               <Route path="/quiz_en_words" element={<QuizEnWordPage />} />
@@ -44,7 +43,10 @@ function App() {
             </Route>
             <Route path="/login" element={<LoginPage  />} />
             <Route path="/register" element={<RegisterPage  />} />
-            
+            <Route path="/en_words" element={<EnWordPage />} />
+
+            <Route path="/en_words/new" element={<AddEnWordPage />} />
+
             <Route path="/" element={<HomePage />} />
           </Routes>
    

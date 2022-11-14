@@ -84,45 +84,7 @@ export default function EnWordPage() {
 
     return (
         <>
-            <div class="modal fade" id="mostErrorList" tabindex="-1" aria-labelledby="mostErrorList" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 className="modal-title text-third text-center" id="exampleModalLabel">Words on which you made more mistakes than successes</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div className="tab-modal">
-                                <div className="d-flex">
-                                    <div className="col-6">
-                                        <div className="head">English word</div>
-                                    </div>
-                                    <div className="col-6">
-                                        <div  className="head">French word</div>
-                                    </div>
-                                </div>
-                                {mostMistakeWord.map((word) => 
-                                <>
-                                 <div className="d-flex lineWord">
-                                    <div className="col-6">
-                                    <div className="word">{word.content}</div>
-                                    </div>
-                                    <div className="col-6">
-                                    <div className="word">{word.frWords.map((frWord) => frWord.content + ", ")}</div>
-                                    </div>
-                                 </div>
-                                </>
-                                )}
-                                
-                            </div>
 
-                        </div>
-                        <div class="modal-footer text-center">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div className="container mt-3">
                 <div className="row justify-content-center align-items-center">
                     <div className="col-md-8">
@@ -192,6 +154,45 @@ export default function EnWordPage() {
                 <div style={{ width: 'fit-content' }}>
                     <Pagination currentPage={currentPage} itemsPerPage={itemsPerPage} length={filteredEnWords.length} onPageChange={handleChangePage} />
 
+                </div>
+            </div>
+            <div class="modal fade" id="mostErrorList" tabindex="-1" aria-labelledby="mostErrorList" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 className="modal-title text-third text-center" id="exampleModalLabel">Words on which you made more mistakes than successes</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div className="tab-modal">
+                                <div className="d-flex">
+                                    <div className="col-6">
+                                        <div className="head">English word</div>
+                                    </div>
+                                    <div className="col-6">
+                                        <div  className="head">French word</div>
+                                    </div>
+                                </div>
+                                {mostMistakeWord.map((word) => 
+                                <>
+                                 <div className="d-flex lineWord">
+                                    <div className="col-6">
+                                    <div className="word">{word.content}</div>
+                                    </div>
+                                    <div className="col-6">
+                                    <div className="word">{word.frWords.map((frWord) => frWord.content + ", ")}</div>
+                                    </div>
+                                 </div>
+                                </>
+                                )}
+                                
+                            </div>
+
+                        </div>
+                        <div class="modal-footer text-center">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
