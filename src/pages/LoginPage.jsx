@@ -37,7 +37,7 @@ function LoginPage() {
             setError("")
             setIsAuthenticated(true)
             toast.success('Vous êtes désormais connecté')
-            navigate("/en_words");
+            navigate("/news");
             setLoading(false)
         } catch (error) {
             toast.error('Une erreur est survenue')

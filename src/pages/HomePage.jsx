@@ -12,7 +12,7 @@ function HomePage() {
 
     useEffect(() => {
         if(AuthAPI.isAuthenticated()){
-            navigate("/en_words");
+            navigate("/news");
         }
     }, [])
     return (
