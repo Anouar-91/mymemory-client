@@ -63,10 +63,11 @@ function find(id){
    });
 }
 
-function create(words){
+function create(words, isShare= false){
     return axios.post(API_URL + "en_fr_words/add", {
         enWord: words.enWord.trim(),
-        frWord: words.frWord.trim()
+        frWord: words.frWord.trim(),
+        isShare
     }).then(async response => {
         const cachedEnWords = await Cache.get('enWords');
         if(cachedEnWords){

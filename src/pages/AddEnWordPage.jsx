@@ -7,6 +7,7 @@ import addWordIllustration from '../assets/img/addWord-illustration.png'
 
 function AddEnWordPage(props) {
     const navigate = useNavigate();
+    const [isShare, setIsShare] = useState(false)
     const [words, setWords] = useState({
         enWord: "",
         frWord: ""
@@ -28,8 +29,9 @@ function AddEnWordPage(props) {
             enWord: enWordCopy,
             frWord: frWordCopy
         })
+
         try {
-            await WordAPI.create(words)
+            await WordAPI.create(words, isShare)
             toast.success("Registered successfully")
 
             setWords({
@@ -39,7 +41,7 @@ function AddEnWordPage(props) {
             navigate("/en_words");
 
         } catch (error) {
-       
+
             toast.error("Error")
         }
     }
@@ -52,31 +54,36 @@ function AddEnWordPage(props) {
                 </div>
                 <div className="row justify-content-center align-items-center">
                     <div className="col-md-6 mt-3">
-                
 
-                            <form onSubmit={handleSubmit}>
-                                <Field required value={words.enWord}
-                                     className="input-shadow"
+
+                        <form onSubmit={handleSubmit}>
+                            <Field required value={words.enWord}
+                                className="input-shadow"
+                                onChange={handleChange}
+                                name="enWord"
+
+                                placeholder="English word">
+                            </Field>
+                            <div className="mt-3">
+                                <Field required value={words.frWord}
+                                    className="input-shadow"
                                     onChange={handleChange}
-                                    name="enWord"
-                         
-                                    placeholder="English word">
-                                </Field>
-                                <div className="mt-3">
-                                    <Field required value={words.frWord}
-                                        className="input-shadow"
-                                        onChange={handleChange}
-                                        name="frWord"
-                          
-                                        placeholder="French word">
-                                    </Field>
-                                </div>
+                                    name="frWord"
 
-                                <div className="mt-3 text-center">
-                                    <button className="btn btn-primary">Save</button>
-                                </div>
-                            </form>
-                   
+                                    placeholder="French word">
+                                </Field>
+                            </div>
+                            <div class="form-check mt-3">
+                                <input class="form-check-input" type="checkbox" value={isShare} onChange={(e) => setIsShare(e.target.checked)}  id="flexCheckDefault" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    share your word with the community MyMemory
+                                </label>
+                            </div>
+                            <div className="mt-3 text-center">
+                                <button className="btn btn-primary">Save</button>
+                            </div>
+                        </form>
+
                     </div>
                     <div className="col-md-6 text-center mt-3">
                         <img src={addWordIllustration} className="img-fluid w-75" alt="illustration" />

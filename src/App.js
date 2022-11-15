@@ -16,6 +16,7 @@ import QuizEnWordPage from "./pages/QuizEnWordPage";
 import RegisterPage from "./pages/RegisterPage";
 import ChoiceTypeQuizPage from "./pages/ChoiceTypeQuizPage";
 import QuizFrWordPage from "./pages/QuizFrWordPage";
+import NewsPage from './pages/NewsPage';
 
 
 AuthAPI.setup();
@@ -30,26 +31,26 @@ function App() {
     }}>
       <BrowserRouter>
         <Navbar />
-      
-          <Routes>
 
-            <Route element={<ProtectedRoute />}>
-              <Route path="/add_translation/:id" element={<AddTranslationPage />} />
-              <Route path="/update_words/:id" element={<UpdateWordsPage />} />
-              <Route path="/quiz_en_words" element={<QuizEnWordPage />} />
-              <Route path="/quiz_fr_words" element={<QuizFrWordPage />} />
-              <Route path="/choice_quiz" element={<ChoiceTypeQuizPage />} />
+        <Routes>
 
-            </Route>
-            <Route path="/login" element={<LoginPage  />} />
-            <Route path="/register" element={<RegisterPage  />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/add_translation/:id" element={<AddTranslationPage />} />
+            <Route path="/update_words/:id" element={<UpdateWordsPage />} />
+            <Route path="/quiz_en_words" element={<QuizEnWordPage />} />
+            <Route path="/quiz_fr_words" element={<QuizFrWordPage />} />
+            <Route path="/choice_quiz" element={<ChoiceTypeQuizPage />} />
             <Route path="/en_words" element={<EnWordPage />} />
-
             <Route path="/en_words/new" element={<AddEnWordPage />} />
+            <Route path="/news" element={<NewsPage />} />
 
-            <Route path="/" element={<HomePage />} />
-          </Routes>
-   
+          </Route>
+
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+
       </BrowserRouter>
       <ToastContainer position="top-center" />
 
