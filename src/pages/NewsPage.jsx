@@ -25,7 +25,7 @@ const NewsPage = () => {
           return (
             <div className="card-news">
             <strong>{news.user.firstname} {news.user.lastname}</strong> a appris un nouveau mot : <strong>{news.enWord.content} !</strong> <br />
-            Strong peut vouloir dire : {news.enWord.frWords.map((frWord) => frWord.content + ", ")}
+            {news.enWord.content} peut vouloir dire : {news.enWord.frWords.map((frWord) => frWord.content + ", ")}
           </div>
           )
         })
