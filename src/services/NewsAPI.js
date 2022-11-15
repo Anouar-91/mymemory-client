@@ -4,7 +4,7 @@ import {API_URL} from './Config'
 
 async function findAll(){
 
-    return axios.get(API_URL + '?order[createdAt]')
+    return axios.get(API_URL + 'news/?order[createdAt]')
       .then(response =>{
         const news = response.data["hydra:member"];
         return news
