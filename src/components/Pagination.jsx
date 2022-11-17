@@ -9,23 +9,30 @@ function Pagination({currentPage, itemsPerPage, length, onPageChange}) {
     }
     
   return (
-    <nav aria-label="w-100 Page navigation example ">
-    <ul className="pagination justify-content-end pr-5">
-      <li className={"page-item" + (currentPage === 1 && " disabled")}>
+<>
+    <div className="d-flex justify-content-space-around">
+    <div className={"btn btn-primary " + (currentPage === 1 && " disabled")}>
         <a onClick={() => onPageChange(currentPage -1)} className="page-link" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
+          <span aria-hidden="true">&laquo; Previous</span>
         </a>
-      </li>
-      {pages.map(page =>
+      </div>
+   
+      <div>
+        Page {currentPage} / {pagesCount}
+      </div>
+{/*       {pages.map(page =>
         <li key={page} className={page === currentPage ? "page-item active" : "page-item"}><a onClick={() => onPageChange(page)} className="page-link" >{page}</a></li>
-      )}
-      <li className={"page-item" + (currentPage === pagesCount && " disabled")}>
+      )} */}
+
+
+      <div className={"btn btn-primary " + (currentPage === pagesCount && " disabled")}>
         <a onClick={() => onPageChange(currentPage +1)} className="page-link" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
+          <span aria-hidden="true">Next &raquo;</span>
         </a>
-      </li>
-    </ul>
-  </nav>
+      </div>
+      </div>
+
+      </>
   )
 }
 

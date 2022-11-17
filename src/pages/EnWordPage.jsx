@@ -34,7 +34,7 @@ export default function EnWordPage() {
         const tab = [];
         enWords.forEach(word => {
             if (word.nbSuccess < word.nbError) {
-                if(tab.length < 10){
+                if (tab.length < 10) {
                     tab.push(word)
                 }
             }
@@ -151,7 +151,7 @@ export default function EnWordPage() {
                     </div>
 
                 )}
-                <div style={{ width: 'fit-content' }}>
+                <div>
                     <Pagination currentPage={currentPage} itemsPerPage={itemsPerPage} length={filteredEnWords.length} onPageChange={handleChangePage} />
 
                 </div>
@@ -170,22 +170,22 @@ export default function EnWordPage() {
                                         <div className="head">English word</div>
                                     </div>
                                     <div className="col-6">
-                                        <div  className="head">French word</div>
+                                        <div className="head">French word</div>
                                     </div>
                                 </div>
-                                {mostMistakeWord.map((word) => 
-                                <>
-                                 <div className="d-flex lineWord">
-                                    <div className="col-6">
-                                    <div className="word">{word.content}</div>
-                                    </div>
-                                    <div className="col-6">
-                                    <div className="word">{word.frWords.map((frWord) => frWord.content + ", ")}</div>
-                                    </div>
-                                 </div>
-                                </>
+                                {mostMistakeWord.map((word) =>
+                                    <>
+                                        <div className="d-flex lineWord">
+                                            <div className="col-6">
+                                                <div className="word">{word.content}</div>
+                                            </div>
+                                            <div className="col-6">
+                                                <div className="word">{word.frWords.map((frWord) => frWord.content + ", ")}</div>
+                                            </div>
+                                        </div>
+                                    </>
                                 )}
-                                
+
                             </div>
 
                         </div>
