@@ -151,7 +151,7 @@ export default function EnWordPage() {
                     </div>
 
                 )}
-                <div>
+                <div className="mb-5">
                     <Pagination currentPage={currentPage} itemsPerPage={itemsPerPage} length={filteredEnWords.length} onPageChange={handleChangePage} />
 
                 </div>
