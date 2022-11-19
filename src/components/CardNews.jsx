@@ -12,7 +12,7 @@ const CardNews = ({news}) => {
       {news.enWord.content} peut vouloir dire : {news.enWord.frWords.map((frWord) => frWord.content + ", ")}
     </div>
     <div className="d-flex justify-content-end mt-3">
-      <small>{formatDate(news.createdAt)} <i class="fa-regular fa-calendar"></i></small>
+      <small>{formatDate(news.createdAt)} <i className="fa-regular fa-calendar"></i></small>
 
     </div>
 

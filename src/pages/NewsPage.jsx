@@ -7,51 +7,61 @@ import { toast } from 'react-toastify';
 const NewsPage = () => {
 
   const [news, setNews] = useState([])
-  const [newsDisplayed, setNewsDisplayed] = useState([]);
+  const [length, setLength] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [loadPost, setLoadPost] = useState(true);
-  const [count, setCount] = useState(8);
+  const [loadPost, setLoadPost] = useState(false);
 
   const fetchNews = async () => {
     try {
-      const data = await NewsAPI.findAll();
-      setNews(data);
-      const tab = []
-      for (let i = 0; i < count; i++) {
-        tab.push(data[i])
-      }
-      setNewsDisplayed(...[tab]);
+      const data = await NewsAPI.getASlice();
+      setNews([...data]);
       setLoading(false)
     } catch (error) {
+      console.log(error)
       setLoading(false)
       toast.error("An error occurred while loading news")
     }
   }
 
-  useEffect(() => {
-    fetchNews();
-    console.log(newsDisplayed)
-  }, [])
-
-  const loadMore = () => {
-    if(window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight){
-      setLoadPost(true);
-      setCount(count + 2)
+  const fechMoreNews =async () => {
+    if(news.length < length){
+      const id = news[news.length - 1].id
+      try {
+        const data = await NewsAPI.getASlice(id);
+        setNews([...news, ...data])
+        setLoadPost(false);
+      } catch (error) {
+        console.log("error in fetchMoreNews")
+      }
     }
   }
 
-  useEffect(() =>{
-    if(loadPost){
-      if(newsDisplayed.length < news.length){
-        const tab = [...newsDisplayed]
-        let i = newsDisplayed.length;
-        for ( i ; i < count; i++) {
-          tab.push(news[i])
-        }
-        setNewsDisplayed(...[tab]);
-      }
+  const fetchLength = async () => {
+    try {
+      const data = await NewsAPI.getLength();
+      setLength(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-      setLoadPost(false);
+  useEffect(() => {
+    fetchNews();
+    fetchLength();
+  }, [])
+
+  const loadMore = () => {
+    if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {
+      if(news.length !== length){
+        setLoadPost(true);
+
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (loadPost) {
+      fechMoreNews();
     }
     window.addEventListener('scroll', loadMore);
     return () => window.removeEventListener('scroll', loadMore);
@@ -63,24 +73,32 @@ const NewsPage = () => {
       <div className="title-primary mt-3 mb-4">
         News
       </div>
-      {loading ? 
-                      <div className="text-center">
-                      <ThreeDots
-                          color="#C30028"
-                          wrapperStyle={{ justifyContent: 'center' }}
-                      />
-                  </div>
-      :(
-     
-        newsDisplayed.map((news) => {
-          return (
-            <CardNews news={news}/>
-          )
-        })
-      
-      )
-    }
- 
+      {loading ?
+        <div className="text-center">
+          <ThreeDots
+            color="#C30028"
+            wrapperStyle={{ justifyContent: 'center' }}
+          />
+        </div>
+        : (
+
+          news.map((news, index) => {
+            return (
+              <CardNews key={index} news={news} />
+            )
+          })
+
+        )
+      }
+      {loadPost && (
+                <div className="text-center">
+                <ThreeDots
+                  color="#C30028"
+                  wrapperStyle={{ justifyContent: 'center' }}
+                />
+              </div>
+      )}
+
 
     </div>
   )

@@ -96,7 +96,7 @@ export default function EnWordPage() {
                             <input type="text" placeholder="Search..." value={search} onChange={handleSearch} className="form-control input-shadow" />
                         </div>
                         {!loading &&
-                            <button onClick={() => openMistakeWord()} type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#mostErrorList">
+                            <button onClick={() => openMistakeWord()} type="button" className="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#mostErrorList">
                                 See the words you make the most mistakes on
                             </button>
                         }
@@ -156,14 +156,14 @@ export default function EnWordPage() {
 
                 </div>
             </div>
-            <div class="modal fade" id="mostErrorList" tabindex="-1" aria-labelledby="mostErrorList" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
+            <div className="modal fade" id="mostErrorList" tabindex="-1" aria-labelledby="mostErrorList" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
                             <h5 className="modal-title text-third text-center" id="exampleModalLabel">Words on which you made more mistakes than successes</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <div className="tab-modal">
                                 <div className="d-flex">
                                     <div className="col-6">
@@ -189,8 +189,8 @@ export default function EnWordPage() {
                             </div>
 
                         </div>
-                        <div class="modal-footer text-center">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <div className="modal-footer text-center">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

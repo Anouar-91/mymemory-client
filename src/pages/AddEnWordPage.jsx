@@ -73,9 +73,9 @@ function AddEnWordPage(props) {
                                     placeholder="French word">
                                 </Field>
                             </div>
-                            <div class="form-check mt-3">
-                                <input class="form-check-input" type="checkbox" value={isShare} onChange={(e) => setIsShare(e.target.checked)}  id="flexCheckDefault" />
-                                <label class="form-check-label" for="flexCheckDefault">
+                            <div className="form-check mt-3">
+                                <input className="form-check-input" type="checkbox" value={isShare} onChange={(e) => setIsShare(e.target.checked)}  id="flexCheckDefault" />
+                                <label className="form-check-label" for="flexCheckDefault">
                                     share your word with the community MyMemory
                                 </label>
                             </div>
