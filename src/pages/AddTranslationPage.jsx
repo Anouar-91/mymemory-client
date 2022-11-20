@@ -5,8 +5,6 @@ import WordAPI from "../services/WordAPI";
 import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner'
 
-
-
 function AddTranslationPage(props) {
     const navigate = useNavigate();
     const [enWord, setEnWord] = useState()
@@ -29,11 +27,9 @@ function AddTranslationPage(props) {
         setFrWord(value)
     }
 
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLoading(true)
-
         try {
             const wordTrim = frWord.replace('’', "'").trim()
             await WordAPI.addFrTranslation(wordTrim, id)
@@ -41,40 +37,32 @@ function AddTranslationPage(props) {
             setFrWord("")
             navigate("/en_words");
             setLoading(false)
-
-
         } catch (error) {
-        
             toast.error("Error")
             setLoading(false)
-
         }
     }
 
     return (
         <>
             <div className="container">
-
-
                 {loading ? (
                     <div className="text-center">
                         <ThreeDots
                             color="#C30028"
-                            wrapperStyle={{justifyContent: 'center'}}
+                            wrapperStyle={{ justifyContent: 'center' }}
                         />
                     </div>
-
                 ) : (
                     <>
                         <div className="title-primary mt-3 mb-4">
                             Add translation
                         </div>
-                        <div >
-
+                        <div>
                             <form onSubmit={handleSubmit}>
                                 <div className="mt-3">
                                     <Field required value={frWord}
-                                    className="input-shadow"
+                                        className="input-shadow"
                                         onChange={handleChange}
                                         name="frWord"
                                         placeholder="French word">
@@ -87,12 +75,7 @@ function AddTranslationPage(props) {
                             </form>
                         </div>
                     </>
-                )
-
-                }
-
-
-
+                )}
             </div>
         </>
     )
