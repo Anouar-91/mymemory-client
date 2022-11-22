@@ -19,12 +19,18 @@ const NewsPage = () => {
     } catch (error) {
       console.log(error)
       setLoading(false)
-      toast.error("An error occurred while loading news")
+
+      if (error.response.status == 401) {
+        toast.error("you are no longer connected!")
+        navigate("/login");
+      } else {
+        toast.error("An error occurred while loading news")
+      }
     }
   }
 
-  const fechMoreNews =async () => {
-    if(news.length < length){
+  const fechMoreNews = async () => {
+    if (news.length < length) {
       const id = news[news.length - 1].id
       try {
         const data = await NewsAPI.getASlice(id);
@@ -52,7 +58,7 @@ const NewsPage = () => {
 
   const loadMore = () => {
     if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {
-      if(news.length !== length){
+      if (news.length !== length) {
         setLoadPost(true);
 
       }
@@ -91,12 +97,12 @@ const NewsPage = () => {
         )
       }
       {loadPost && (
-                <div className="text-center">
-                <ThreeDots
-                  color="#C30028"
-                  wrapperStyle={{ justifyContent: 'center' }}
-                />
-              </div>
+        <div className="text-center">
+          <ThreeDots
+            color="#C30028"
+            wrapperStyle={{ justifyContent: 'center' }}
+          />
+        </div>
       )}
 
 

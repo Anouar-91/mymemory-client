@@ -68,6 +68,12 @@ function QuizFrWordPage() {
             await WordAPI.incrementError(errorIdArray);
             await WordAPI.incrementSuccess(successIdArray);
         } catch (error) {
+            if (error.response.status == 401) {
+                toast.error("you are no longer connected!")
+                navigate("/login");
+              }else{
+                toast.error("Error !")
+              }
         }
 
         setErrors(errorArray);
@@ -163,7 +169,7 @@ function QuizFrWordPage() {
                                             </p>
                                         )
                                     })}
-                                                                                                            <img  src={failureIllustration} alt="illustration" className="img-fluid" />
+                                    <img src={failureIllustration} alt="illustration" className="img-fluid" />
 
                                 </div>
 

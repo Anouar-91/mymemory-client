@@ -38,8 +38,13 @@ function AddTranslationPage(props) {
             navigate("/en_words");
             setLoading(false)
         } catch (error) {
-            toast.error("Error")
             setLoading(false)
+            if (error.response.status == 401) {
+                toast.error("you are no longer connected!")
+                navigate("/login");
+            } else{
+                toast.error("Error")
+            }
         }
     }
 

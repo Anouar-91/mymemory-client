@@ -43,12 +43,15 @@ function AddEnWordPage(props) {
             navigate("/en_words");
         } catch (error) {
             console.log(error.response.status)
-            if(error.response.status == 422){
+            setLoading(false)
+            if (error.response.status == 422) {
                 toast.error("This word is already in your list");
-            }else{
+            } else if (error.response.status == 401) { 
+                toast.error("you are no longer connected!")
+                navigate("/login");
+            } else {
                 toast.error("Error")
             }
-            setLoading(false)
         }
     }
 

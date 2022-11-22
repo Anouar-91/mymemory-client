@@ -27,6 +27,12 @@ function UpdateWordsPage() {
             setFrWords(table);
             setLoading(false);
         } catch (error) {
+            if (error.response.status == 401) {
+                toast.error("you are no longer connected!")
+                navigate("/login");
+              }else{
+                toast.error("Error !")
+              }
         }
 
     }
