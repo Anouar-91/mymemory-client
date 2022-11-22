@@ -6,7 +6,7 @@ import WordAPI from '../services/WordAPI';
 import illustration from '../assets/img/frWordQuiz-illustration.png';
 import successIllustration from '../assets/img/success-illustration.png'
 import failureIllustration from '../assets/img/failure-illustration.png'
-import {  useNavigate } from 'react-router-dom';
+import {  useNavigate, useParams , useSearchParams} from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
@@ -18,9 +18,19 @@ function QuizFrWordPage() {
     const [formHide, setFormHide] = useState(false);
     const [errors, setErrors] = useState();
     const [success, setSuccess] = useState();
+    const [queryParameters] = useSearchParams();
+    const lowsuccess = queryParameters.get("lowsuccess") ? true : false;
+
 
     const fetchRandomEnWord = async () => {
-        const data = await Quiz.generateRandomEnWord();
+        let data ;
+        if(lowsuccess){
+            console.log(true)
+            data = await Quiz.generateRandomEnWord("lowsuccess");
+        }else{
+            console.log(false)
+          data = await Quiz.generateRandomEnWord();
+        }
         setRandomEnWord(data)
         let table = {}
         data.forEach(word => {

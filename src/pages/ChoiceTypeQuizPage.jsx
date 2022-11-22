@@ -1,9 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import enWordQuestion from '../assets/img/enWordQuestion.png'
 import frWordQuestion from '../assets/img/frWordQuestion.png'
+import ModalChoiceListWord from '../components/ModalChoiceListWord';
 
 function ChoiceTypeQuizPage() {
+    const navigate = useNavigate();
+
+    const handleClick = (to) => {
+        const myModal = document.querySelectorAll('.btn-close');
+        myModal.forEach(modal => modal.click())
+        navigate(to);
+    }
     return (
         <>
             <div className="container mb-5">
@@ -25,7 +33,9 @@ function ChoiceTypeQuizPage() {
                                     <p>In this mode you have to translate english words into french.</p>
                                 </div>
                             </div>
-                            <Link to="/quiz_en_words" className="btn btn-primary">Select</Link>
+                            <button   type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseListWordEn">
+                                Select
+                            </button>
 
                         </div>
                     </div>
@@ -40,13 +50,17 @@ function ChoiceTypeQuizPage() {
                                     <p>In this mode you have to translate french words into english.</p>
                                 </div>
                             </div>
-                            <Link to="/quiz_fr_words" className="btn btn-primary">Select</Link>
+                            <button   type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseListWordFr">
+                                Select
+                            </button>
 
                         </div>
                     </div>
                 </div>
 
             </div>
+            <ModalChoiceListWord  handleClick={handleClick} to="/quiz_fr_words" id="chooseListWordFr" title="French to english" />
+            <ModalChoiceListWord handleClick={handleClick} to="/quiz_en_words" id="chooseListWordEn" title="English to french"/>
 
         </>
     )

@@ -5,8 +5,15 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
 
-async function  generateRandomEnWord(){
+async function  generateRandomEnWord(type = null){
+
+    if(type == "lowsuccess" ){
+        const words = await WordAPI.lowSuccess(10);
+        console.log(words)
+        return words;
+    }
     const enWords = await WordAPI.findAll();
+
     const max = enWords.length > 10 ? 10 : enWords.length;
     let questions = [];
     let arrayRandom = [];

@@ -62,6 +62,12 @@ function find(id){
         return response.data;
    });
 }
+function lowSuccess(limit = null){
+    
+   return axios.get(API_URL + `en_words/low-success?${limit != null && "limit=" + limit  }`).then((response) => {
+        return response.data["hydra:member"];
+   });
+}
 
 function create(words, isShare= false){
     return axios.post(API_URL + "en_fr_words/add", {
@@ -140,6 +146,7 @@ function incrementError(arrayIdError){
 }
 
 function incrementSuccess(arrayIdSucces){
+    console.log(arrayIdSucces, "arrayIdSuccess");
     return axios.post(API_URL + "en_words_increment/success", {enWords:arrayIdSucces})
     .then(async response => {
         const cachedEnWords = await Cache.get('enWords');
@@ -170,5 +177,6 @@ export default {
     updateFrWord,
     incrementError,
     incrementSuccess,
-    getRate
+    getRate,
+    lowSuccess
 }
