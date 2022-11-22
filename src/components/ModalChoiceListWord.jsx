@@ -13,12 +13,12 @@ const ModalChoiceListWord = ({handleClick, to, id, title}) => {
             <div className="modal-body">
                 <h3 className="text-center mb-3">{title}</h3>
                 <div className="tab-modal">
-                    <div className="d-flex">
-                        <div className="col-6 text-center">
+                    <div className="d-flex row">
+                        <div className="col-md-6 mt-3 text-center">
                         <button onClick={() => handleClick(to )}  className="btn btn-primary">Random word</button>
 
                         </div>
-                        <div className="col-6 text-center">
+                        <div className="col-md-6 mt-3 text-center">
                         <button  onClick={() => handleClick(to + "?lowsuccess=true")} className="btn btn-primary">Most difficult word</button>
 
                         </div>
