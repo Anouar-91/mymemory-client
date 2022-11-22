@@ -49,7 +49,10 @@ const NewsPage = () => {
       const data = await NewsAPI.getLength();
       setLength(data)
     } catch (error) {
-      console.log(error)
+      if (error.response.status == 401) {
+        toast.error("You are no longer connected!")
+        navigate("/login");
+      } 
     }
   }
 
