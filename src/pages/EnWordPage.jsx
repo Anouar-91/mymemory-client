@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner';
 import WordAPI from '../services/WordAPI';
 import ModalEnWord from '../components/ModalEnWord';
+import { useNavigate } from 'react-router-dom';
 import enwordIllustration from '../assets/img/enWord-illustration.png';
 
 export default function EnWordPage() {
@@ -16,6 +17,8 @@ export default function EnWordPage() {
     const [rate, setRate] = useState(0)
     const [wordModal, setWordModal] = useState({ content: "", frWords: [], id: 1, nbError: 0, nbSuccess: 0 });
     const [mostMistakeWord, setMostMistakeWord] = useState([]);
+    const navigate = useNavigate();
+
 
 
     const fetchEnWords = async () => {
@@ -26,6 +29,10 @@ export default function EnWordPage() {
             setEnWords(data)
             setLoading(false)
         } catch (error) {
+            if (error.response.status == 401) {
+                toast.error("You are no longer connected!")
+                navigate("/login");
+              } 
             toast.error("An error occurred while loading clients")
         }
     }
