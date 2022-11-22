@@ -94,7 +94,7 @@ const NewsPage = () => {
         : (
           <>
             <div className="row mb-5">
-              <div className="col-md-6">
+              <div className="col-md-6 mb-3">
                 <div className="card-news" style={{"height" : "100%"}}>
                   <div>
                     <strong className="text-primary">Mise à jour !</strong>   <br />
@@ -104,7 +104,7 @@ const NewsPage = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 mb-3">
                 <div className="card-news" style={{"height" : "100%"}}>
                   <div>
                     <strong className="text-primary">Update !</strong>   <br />
