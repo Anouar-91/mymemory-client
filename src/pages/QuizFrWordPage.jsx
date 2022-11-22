@@ -6,9 +6,12 @@ import WordAPI from '../services/WordAPI';
 import illustration from '../assets/img/frWordQuiz-illustration.png';
 import successIllustration from '../assets/img/success-illustration.png'
 import failureIllustration from '../assets/img/failure-illustration.png'
+import {  useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 function QuizFrWordPage() {
+    const navigate = useNavigate();
     const [randomEnWord, setRandomEnWord] = useState()
     const [loading, setLoading] = useState(true);
     const [answer, setAnswer] = useState([]);

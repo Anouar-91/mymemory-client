@@ -3,9 +3,11 @@ import NewsAPI from '../services/NewsAPI';
 import CardNews from '../components/CardNews';
 import { ThreeDots } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+
 
 const NewsPage = () => {
-
+  const navigate = useNavigate();
   const [news, setNews] = useState([])
   const [length, setLength] = useState(null);
   const [loading, setLoading] = useState(true);
