@@ -47,7 +47,7 @@ function AddEnWordPage(props) {
             if (error.response.status == 422) {
                 toast.error("This word is already in your list");
             } else if (error.response.status == 401) { 
-                toast.error("you are no longer connected!")
+                toast.error("You are no longer connected!")
                 navigate("/login");
             } else {
                 toast.error("Error")

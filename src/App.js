@@ -42,9 +42,9 @@ function App() {
             <Route path="/choice_quiz" element={<ChoiceTypeQuizPage />} />
             <Route path="/en_words" element={<EnWordPage />} />
             <Route path="/news" element={<NewsPage />} />
+            <Route path="/en_words/new" element={<AddEnWordPage />} />
 
           </Route>
-          <Route path="/en_words/new" element={<AddEnWordPage />} />
 
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
