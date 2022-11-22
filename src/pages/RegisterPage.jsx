@@ -49,6 +49,8 @@ function RegisterPage() {
                 password: "",
                 username: ""
             })
+            toast.success("Registered successfully ! Please login")
+
             navigate('/login');
         } catch (error) {
             toast.error('Une erreur est survenue')
