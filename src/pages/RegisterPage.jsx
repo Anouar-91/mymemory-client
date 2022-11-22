@@ -141,7 +141,7 @@ function RegisterPage() {
 
                 </div>
                 <div className="text-center d-md-block d-none" style={{position: 'absolute', bottom:"0%", left:"12%", transform: 'translateX(-50%)'}}>
-                <img src={registerIllustration} alt="" />
+                <img src={registerIllustration} alt="" className="img-fluid w-75" />
             </div>
             </div>
 
