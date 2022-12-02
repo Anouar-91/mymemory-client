@@ -93,7 +93,7 @@ const NewsPage = () => {
         </div>
         : (
           <>
-            <div className="row mb-5">
+{/*             <div className="row mb-5">
               <div className="col-md-6 mb-3">
                 <div className="card-news" style={{"height" : "100%"}}>
                   <div>
@@ -115,7 +115,7 @@ const NewsPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {
               news.map((news, index) => {
