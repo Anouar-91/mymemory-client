@@ -71,8 +71,8 @@ function lowSuccess(limit = null){
 
 function create(words, isShare= false){
     return axios.post(API_URL + "en_fr_words/add", {
-        enWord: words.enWord.trim(),
-        frWord: words.frWord.trim(),
+        enWord: words.enWord.replace('’', "'").trim(),
+        frWord: words.frWord.replace('’', "'").trim(),
         isShare
     }).then(async response => {
         const cachedEnWords = await Cache.get('enWords');
@@ -85,7 +85,7 @@ function create(words, isShare= false){
 }
 function addFrTranslation(word, id){
     return axios.post(API_URL + "fr_words", {
-        content: word,
+        content: word.replace('’', "'").trim(),
         enWord: "/api/en_words/"+ id
     }).then(async response => {
         const cachedEnWords = await Cache.get('enWords');
@@ -103,7 +103,7 @@ function addFrTranslation(word, id){
 }
 
 function update(word){
-    return axios.put(API_URL + "en_words/" + word.id, {content:word.content.trim()}).then(async response => {
+    return axios.put(API_URL + "en_words/" + word.id, {content:word.content.replace('’', "'").trim()}).then(async response => {
         const cachedEnWords = await Cache.get('enWords');
         if(cachedEnWords){
             const index = cachedEnWords.findIndex(w => w.id === +word.id);
@@ -115,7 +115,7 @@ function update(word){
 }
 
 function updateFrWord(id, word){
-    return axios.put(API_URL + "fr_words/" +id, {content:word}).then(async response => {
+    return axios.put(API_URL + "fr_words/" +id, {content:word.replace('’', "'").trim()}).then(async response => {
         const cachedEnWords = await Cache.get('enWords');
         if(cachedEnWords){
             const enWord = await find(response.data.enWord.id);

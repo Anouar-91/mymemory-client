@@ -57,8 +57,7 @@ function UpdateWordsPage() {
 
     const updateEnWord = async () => {
         setLoading(true)
-        const enWordCopy = enWord.content.replace('’', "'").trim();
-        console.log(enWordCopy, enWord.content)
+        const enWordCopy = enWord.content;
         setEnWord({
             ...enWord,
             content : enWordCopy
@@ -78,8 +77,7 @@ function UpdateWordsPage() {
         setLoading(true)
 
         try {
-            const wordTrim = word.replace('’', "'").trim()
-            await WordAPI.updateFrWord(id, wordTrim);
+            await WordAPI.updateFrWord(id, word);
             toast.success("Registered successfully");
             setLoading(false)
 

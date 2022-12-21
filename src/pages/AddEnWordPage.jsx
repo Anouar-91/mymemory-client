@@ -26,11 +26,9 @@ function AddEnWordPage(props) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLoading(true)
-        const enWordCopy = words.enWord.replace('’', "'").trim()
-        const frWordCopy = words.frWord.replace('’', "'").trim()
         setWords({
-            enWord: enWordCopy,
-            frWord: frWordCopy
+            enWord:  words.enWord,
+            frWord: words.frWord
         })
         try {
             await WordAPI.create(words, isShare)
