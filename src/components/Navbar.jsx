@@ -38,10 +38,10 @@ function Navbar() {
             )}
             </li>
             <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/en_words">English Words</Link>
+              <Link className="nav-link" aria-current="page" to="/en_words">List word</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/choice_quiz">Quiz Word <i className="fa-solid fa-feather"></i></Link>
+              <Link className="nav-link" aria-current="page" to="/choice_quiz">Quiz</Link>
             </li>
           </ul>
           <ul className="navbar-nav ml-auto ml-3 mt-3 mt-md-0">
