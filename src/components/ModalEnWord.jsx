@@ -1,7 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import VoiceSelector from './VoiceSelector';
 
 function ModalEnWord({ word, handleDelete }) {
+    const [textValue, setTextValue] = useState('');
+  const [selectedVoice, setSelectedVoice] = useState(0);
     const navigate = useNavigate();
     const update = () => {
         const myModal = document.querySelector('.btn-close');
@@ -17,8 +20,8 @@ function ModalEnWord({ word, handleDelete }) {
     const speak = ( word) => {
         const synth = window.speechSynthesis;
         var utterance = new SpeechSynthesisUtterance(word);
-        utterance.voice = synth.getVoices()[33];
-    
+        utterance.voice = synth.getVoices()['en-US'];
+        utterance.lang = 'en-US';    
         synth.speak(utterance);
       };
 
@@ -33,6 +36,7 @@ function ModalEnWord({ word, handleDelete }) {
                         </a>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <VoiceSelector selected={selectedVoice} setSelected={setSelectedVoice} />
                     <div className="modal-body">
                         <strong>In french is : </strong> <br />
                         <ul>
