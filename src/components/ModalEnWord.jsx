@@ -36,7 +36,6 @@ function ModalEnWord({ word, handleDelete }) {
                         </a>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <VoiceSelector selected={selectedVoice} setSelected={setSelectedVoice} />
                     <div className="modal-body">
                         <strong>In french is : </strong> <br />
                         <ul>
