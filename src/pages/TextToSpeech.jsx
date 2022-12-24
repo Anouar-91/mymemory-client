@@ -17,7 +17,7 @@ const TextToSpeech = () => {
     const synth = window.speechSynthesis;
     var utterance = new SpeechSynthesisUtterance(textValue);
     console.log(selectedVoice)
-    utterance.voice = synth.getVoices()[49];
+    utterance.voice = synth.getVoices()[33];
 
     synth.speak(utterance);
   };

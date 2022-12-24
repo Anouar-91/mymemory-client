@@ -17,7 +17,7 @@ function ModalEnWord({ word, handleDelete }) {
     const speak = ( word) => {
         const synth = window.speechSynthesis;
         var utterance = new SpeechSynthesisUtterance(word);
-        utterance.voice = synth.getVoices()[49];
+        utterance.voice = synth.getVoices()[33];
     
         synth.speak(utterance);
       };
