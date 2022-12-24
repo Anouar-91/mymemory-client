@@ -14,13 +14,23 @@ function ModalEnWord({ word, handleDelete }) {
         myModal.click()
         navigate("/add_translation/" + word.id)
     }
+    const speak = ( word) => {
+        const synth = window.speechSynthesis;
+        var utterance = new SpeechSynthesisUtterance(word);
+        utterance.voice = synth.getVoices()[49];
+    
+        synth.speak(utterance);
+      };
 
     return (
-        <div className="modal fade" id={"wordModal" } tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={"wordModal"} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h1 className="modal-title fs-5" id="exampleModalLabel">{word.content}</h1>
+                        <h1 className="modal-title fs-5" id="exampleModalLabel">{word.content}</h1> &nbsp; &nbsp;
+                        <a onClick={() => speak(word.content)} className="btn btn-primary">                        
+                        <i class="fa-sharp fa-solid fa-headphones"></i>
+                        </a>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
@@ -34,7 +44,7 @@ function ModalEnWord({ word, handleDelete }) {
                         <p><span className="text-danger">Error :</span> {word.nbError}</p>
                         <p><span className="text-success">Success :</span> {word.nbSuccess}</p>
                     </div>
-          
+
 
                     <div className="modal-footer d-flex justify-content-space-around">
                         <button

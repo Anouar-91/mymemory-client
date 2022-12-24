@@ -18,6 +18,8 @@ import ChoiceTypeQuizPage from "./pages/ChoiceTypeQuizPage";
 import QuizFrWordPage from "./pages/QuizFrWordPage";
 import NewsPage from './pages/NewsPage';
 
+import TextToSpeech from './pages/TextToSpeech';
+
 
 AuthAPI.setup();
 
@@ -49,6 +51,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/" element={<HomePage />} />
+          <Route path="/test" element={<TextToSpeech />} />
         </Routes>
 
       </BrowserRouter>
