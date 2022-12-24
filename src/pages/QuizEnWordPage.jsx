@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Quiz from '../services/Quiz';
 import { ThreeDots } from 'react-loader-spinner';
 import InputQuestionWord from "../components/forms/InputQuestionWord";
+import InputQuestionOralWord from "../components/forms/InputQuestionOralWord";
 import WordAPI from '../services/WordAPI';
 import illustration from '../assets/img/enWordQuiz-illustration.png'
 import successIllustration from '../assets/img/success-illustration.png'
@@ -12,6 +13,7 @@ import { toast } from 'react-toastify';
 
 function QuizEnWordPage() {
     const navigate = useNavigate();
+    const [choiceTest, setChoiceTest] = useState(null);
     const [randomEnWord, setRandomEnWord] = useState()
     const [loading, setLoading] = useState(true);
     const [answer, setAnswer] = useState([]);
@@ -121,25 +123,57 @@ function QuizEnWordPage() {
                         <>
                             <div className="row align-items-center">
                                 <div className="col-md-6">
-                                    <form onSubmit={handleSubmit}>
-                                        {randomEnWord.map((enWord, index) => {
-                                            return (
-                                                <>
-                                                    <div key={index} className="mt-3">
-                                                        <InputQuestionWord required value={answer[enWord.id]}
-                                                            onChange={handleChange}
-                                                            name={enWord.id}
-                                                            label={enWord.content}
-                                                            placeholder="Your answer">
-                                                        </InputQuestionWord>
-                                                    </div>
-                                                </>
-                                            )
-                                        })}
-                                        <div className="text-center mt-4">
-                                            <button className="btn btn-primary">Submit</button>
-                                        </div>
-                                    </form>
+                                    {
+                                        choiceTest=="write" ? (
+                                            <form onSubmit={handleSubmit}>
+                                            {randomEnWord.map((enWord, index) => {
+                                                return (
+                                                    <>
+                                                        <div key={index} className="mt-3">
+                                                            <InputQuestionWord required value={answer[enWord.id]}
+                                                                onChange={handleChange}
+                                                                name={enWord.id}
+                                                                label={enWord.content}
+                                                                placeholder="Your answer">
+                                                            </InputQuestionWord>
+                                                        </div>
+                                                    </>
+                                                )
+                                            })}
+                                            <div className="text-center mt-4">
+                                                <button className="btn btn-primary">Submit</button>
+                                            </div>
+                                        </form>
+                                        ): choiceTest=="oral" ?  (
+                                            <form onSubmit={handleSubmit}>
+                                            {randomEnWord.map((enWord, index) => {
+                                                return (
+                                                    <>
+                                                        <div key={index} className="mt-3">
+                                                            <InputQuestionOralWord required value={answer[enWord.id]}
+                                                                onChange={handleChange}
+                                                                name={enWord.id}
+                                                                label={enWord.content}
+                                                                placeholder="Your answer">
+                                                            </InputQuestionOralWord>
+                                                        </div>
+                                                    </>
+                                                )
+                                            })}
+                                            <div className="text-center mt-4">
+                                                <button className="btn btn-primary">Submit</button>
+                                            </div>
+                                        </form>
+                                        ) : (
+                                            <>
+                                            <div className="d-flex justify-content-space-around">
+                                            <button className="btn btn-primary" onClick={() => setChoiceTest("write")}>Written comprehension</button>
+                                            <button className="btn btn-primary" onClick={() => setChoiceTest("oral")}>Oral comprehension</button>
+                                            </div>
+                                            </>
+                                        )
+                                    }
+
                                 </div>
                                 <div className="col-md-6 d-none d-md-block text-center">
                                     <img src={illustration} alt="illustration" className="img-fluid" />
