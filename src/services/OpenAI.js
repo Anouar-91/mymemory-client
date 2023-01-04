@@ -5,9 +5,10 @@ const translateTextToHtml = (textOpenAi) => {
 }
 
 export const callApiOpenAI = async (word) => {
+    console.log(process.env.REACT_APP_OPEN_AI_KEY)
     const headers = {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + `${process.env.OPEN_AI_KEY}`
+        Authorization: `Bearer ${process.env.REACT_APP_OPEN_AI_KEY}`
     }
     return  await axios.post('https://api.openai.com/v1/completions',
         {
