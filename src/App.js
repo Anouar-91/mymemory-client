@@ -19,6 +19,7 @@ import QuizFrWordPage from "./pages/QuizFrWordPage";
 import NewsPage from './pages/NewsPage';
 
 import TextToSpeech from './pages/TextToSpeech';
+import OpenAI from "./pages/OpenAI";
 
 
 AuthAPI.setup();
@@ -52,6 +53,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/test" element={<TextToSpeech />} />
+          <Route path="/test2" element={<OpenAI />} />
         </Routes>
 
       </BrowserRouter>
