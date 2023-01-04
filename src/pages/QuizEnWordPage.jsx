@@ -26,10 +26,8 @@ function QuizEnWordPage() {
     const fetchRandomEnWord = async () => {
         let data ;
         if(lowsuccess){
-            console.log(true)
             data = await Quiz.generateRandomEnWord("lowsuccess");
         }else{
-            console.log(false)
           data = await Quiz.generateRandomEnWord();
         }
         setRandomEnWord(data)
