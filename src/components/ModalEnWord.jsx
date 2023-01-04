@@ -3,6 +3,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom'
 import VoiceSelector from './VoiceSelector';
 import { callApiOpenAI } from '../services/OpenAI';
+import { useEffect } from 'react';
 
 function ModalEnWord({ word, handleDelete }) {
     const [loading, setLoading] = useState()
@@ -14,6 +15,9 @@ function ModalEnWord({ word, handleDelete }) {
         myModal.click()
         navigate("/update_words/" + word.id)
     }
+    useEffect(() => {
+        document.getElementById('resultApi').innerHTML = "" 
+    },[word])
     const generateSentance = async () => {
         setLoading(true)
         try {
@@ -81,8 +85,6 @@ function ModalEnWord({ word, handleDelete }) {
                                 </div>
                             )}
                             <div id="resultApi"></div>
-
-
                         </div>
 
                     </div>
