@@ -1,15 +1,31 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import { ThreeDots } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom'
 import VoiceSelector from './VoiceSelector';
+import { callApiOpenAI } from '../services/OpenAI';
 
 function ModalEnWord({ word, handleDelete }) {
+    const [loading, setLoading] = useState()
     const [textValue, setTextValue] = useState('');
-  const [selectedVoice, setSelectedVoice] = useState(0);
+    const [selectedVoice, setSelectedVoice] = useState(0);
     const navigate = useNavigate();
     const update = () => {
         const myModal = document.querySelector('.btn-close');
         myModal.click()
         navigate("/update_words/" + word.id)
+    }
+    const generateSentance = async () => {
+        setLoading(true)
+        try {
+            const data = await callApiOpenAI(word.content)
+            setLoading(false)
+            document.getElementById('resultApi').innerHTML = data
+
+        } catch (error) {
+            setLoading(false)
+            console.log(error)
+        }
+
     }
 
     const addTranslation = () => {
@@ -17,13 +33,13 @@ function ModalEnWord({ word, handleDelete }) {
         myModal.click()
         navigate("/add_translation/" + word.id)
     }
-    const speak = ( word) => {
+    const speak = (word) => {
         const synth = window.speechSynthesis;
         var utterance = new SpeechSynthesisUtterance(word);
         utterance.voice = synth.getVoices()['en-US'];
-        utterance.lang = 'en-US';    
+        utterance.lang = 'en-US';
         synth.speak(utterance);
-      };
+    };
 
     return (
         <div className="modal fade" id={"wordModal"} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -31,8 +47,8 @@ function ModalEnWord({ word, handleDelete }) {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h1 className="modal-title fs-5" id="exampleModalLabel">{word.content}</h1> &nbsp; &nbsp;
-                        <a onClick={() => speak(word.content)} className="btn btn-primary">                        
-                        <i class="fa-sharp fa-solid fa-headphones"></i>
+                        <a onClick={() => speak(word.content)} className="btn btn-primary">
+                            <i className="fa-sharp fa-solid fa-headphones"></i>
                         </a>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -46,6 +62,29 @@ function ModalEnWord({ word, handleDelete }) {
                         <hr />
                         <p><span className="text-danger">Error :</span> {word.nbError}</p>
                         <p><span className="text-success">Success :</span> {word.nbSuccess}</p>
+                        <hr />
+                        <div className="text-center">
+                            {loading ? (
+                                <div className="text-center">
+                                    <ThreeDots
+                                        color="#C30028"
+                                        wrapperStyle={{ justifyContent: 'center' }}
+                                    />
+                                </div>
+                            ) : (
+                                <div className='text-center'>
+                                    <button
+                                        onClick={() => generateSentance()}
+                                        className="btn btn-sm btn-primary">
+                                        Generate me example sentences
+                                    </button>
+                                </div>
+                            )}
+                            <div id="resultApi"></div>
+
+
+                        </div>
+
                     </div>
 
 
