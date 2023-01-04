@@ -5,7 +5,6 @@ const translateTextToHtml = (textOpenAi) => {
 }
 
 export const callApiOpenAI = async (word) => {
-    console.log(process.env.REACT_APP_OPEN_AI_KEY)
     const headers = {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.REACT_APP_OPEN_AI_KEY}`
