@@ -7,7 +7,7 @@ const translateTextToHtml = (textOpenAi) => {
 export const callApiOpenAI = async (word) => {
     const headers = {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + "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"
+        Authorization: "Bearer " + `${process.env.OPEN_AI_KEY}`
     }
     return  await axios.post('https://api.openai.com/v1/completions',
         {
