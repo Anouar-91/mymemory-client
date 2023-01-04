@@ -14,7 +14,7 @@ function InputQuestionOralWord({ name, label, value, onChange, placeholder, type
       <label htmlFor={name} className="mb-3">How do you say 
         <strong className='text-secondary'> &nbsp;
           <a onClick={() => speak(label)} className="btn btn-sm btn-primary">
-            <i class="fa-sharp fa-solid fa-headphones"></i>
+            <i className="fa-sharp fa-solid fa-headphones"></i>
           </a> &nbsp;
         </strong> {mode === "fr" ? "in english" : "in french"}  ?
     </label>
