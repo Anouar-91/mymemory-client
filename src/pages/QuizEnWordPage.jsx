@@ -130,6 +130,7 @@ function QuizEnWordPage() {
                                                         <div key={index} className="mt-3">
                                                             <InputQuestionWord required value={answer[enWord.id]}
                                                                 onChange={handleChange}
+                                                                description={enWord.description}
                                                                 name={enWord.id}
                                                                 label={enWord.content}
                                                                 placeholder="Your answer">

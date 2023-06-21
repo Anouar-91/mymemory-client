@@ -57,6 +57,13 @@ function ModalEnWord({ word, handleDelete }) {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
+                        {word.description && (
+                            <>
+                            <strong>Description :</strong> {word.description}
+                            <hr />
+                            </>
+                        )}
+                
                         <strong>In french is : </strong> <br />
                         <ul>
                             {word.frWords.map(frWord =>

@@ -29,8 +29,6 @@ async function getRate(){
     if(count > 0){
         result = countSuccess / count
     }
-    console.log(countError, "error")
-    console.log(countSuccess, "success")
     return Math.round(result * 100);
 }
 
@@ -70,9 +68,14 @@ function lowSuccess(limit = null){
 }
 
 function create(words, isShare= false){
+    const enDescription = words.enDescription?.trim() !== "" ?words.enDescription.trim(): null;
+    const frDescription = words.frDescription?.trim() !== "" ?words.frDescription.trim(): null;
+    console.log(enDescription, frDescription)
     return axios.post(API_URL + "en_fr_words/add", {
         enWord: words.enWord.replace('’', "'").trim(),
         frWord: words.frWord.replace('’', "'").trim(),
+        enDescription: enDescription,
+        frDescription: frDescription,
         isShare
     }).then(async response => {
         const cachedEnWords = await Cache.get('enWords');
